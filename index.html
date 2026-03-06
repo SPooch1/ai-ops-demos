@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ops System - Demo Portfolio</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #e5e5e5;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1.5rem 1rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        header a {
+            color: #0EA5E9;
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        header a:hover { color: #38bdf8; }
+
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin: 0.75rem 0 0.5rem;
+            color: #fff;
+        }
+
+        h1 span { color: #0EA5E9; }
+
+        .subtitle {
+            color: #737373;
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #1f1f1f;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: border-color 0.2s, transform 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: #0EA5E9;
+            transform: translateY(-3px);
+        }
+
+        .card .industry {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #F59E0B;
+            margin-bottom: 0.5rem;
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #a3a3a3;
+            font-size: 0.925rem;
+            line-height: 1.55;
+            flex-grow: 1;
+        }
+
+        .card .view {
+            display: inline-block;
+            margin-top: 1.25rem;
+            color: #0EA5E9;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .card:hover .view { text-decoration: underline; }
+
+        .cta-section {
+            text-align: center;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .cta-section p {
+            color: #737373;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #0EA5E9;
+            color: #fff;
+            font-weight: 600;
+            padding: 0.875rem 2.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        .cta-btn:hover { background: #0284c7; }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #1a1a1a;
+            color: #525252;
+            font-size: 0.8rem;
+        }
+
+        footer a { color: #0EA5E9; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://aiopssystem.com">aiopssystem.com</a>
+        <h1><span>AI Ops System</span> — Demo Portfolio</h1>
+        <p class="subtitle">Custom websites and automation built for small businesses. Each demo below is a fully functional site created by our team.</p>
+    </header>
+
+    <main>
+        <div class="grid">
+            <a class="card" href="manufacturing/">
+                <div class="industry">Manufacturing</div>
+                <h2>Forge & Flow Manufacturing</h2>
+                <p>Precision metal fabrication company. Full-service site with capabilities showcase, quote request flow, and industrial-grade design.</p>
+                <span class="view">View Demo &rarr;</span>
+            </a>
+
+            <a class="card" href="dental/">
+                <div class="industry">Healthcare / Dental</div>
+                <h2>Bright Line Dental</h2>
+                <p>Modern family and cosmetic dentistry practice in Westerville, OH. Patient-friendly design with service breakdowns and online scheduling.</p>
+                <span class="view">View Demo &rarr;</span>
+            </a>
+
+            <a class="card" href="professional-services/">
+                <div class="industry">Legal / Professional Services</div>
+                <h2>Calloway & Park</h2>
+                <p>Business law firm in Dublin, Ohio. Clean, authoritative design with practice area pages and client-focused messaging.</p>
+                <span class="view">View Demo &rarr;</span>
+            </a>
+
+            <a class="card" href="cpa/">
+                <div class="industry">Accounting / CPA</div>
+                <h2>Ridgeline CPA Group</h2>
+                <p>Business accounting and strategic advisory firm in Dublin, Ohio. Full site with service pages, team bios, and lead capture.</p>
+                <span class="view">View Demo &rarr;</span>
+            </a>
+
+            <a class="card" href="ai-ops-system/">
+                <div class="industry">Technology / SaaS</div>
+                <h2>AI Ops System</h2>
+                <p>Our own site. Custom websites and automation for small business, built with the same process we use for every client.</p>
+                <span class="view">View Demo &rarr;</span>
+            </a>
+        </div>
+    </main>
+
+    <div class="cta-section">
+        <p>Want a site like these for your business?</p>
+        <a class="cta-btn" href="https://meetings.hubspot.com/scott-pooch">Schedule a Call</a>
+    </div>
+
+    <footer>
+        Built by <a href="https://aiopssystem.com">AI Ops System</a>
+    </footer>
+</body>
+</html>

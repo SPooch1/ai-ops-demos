@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forge & Flow Manufacturing | Precision Metal Fabrication</title>
+    <meta name="description" content="Forge & Flow Manufacturing — precision metal fabrication for automotive and aerospace industries. 18 years of excellence in Columbus, Ohio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --charcoal: #1a1a1a;
+            --charcoal-light: #242424;
+            --steel: #2d2d2d;
+            --steel-light: #3a3a3a;
+            --steel-mid: #555;
+            --steel-text: #999;
+            --steel-bright: #ccc;
+            --white: #f0f0f0;
+            --amber: #e8870e;
+            --amber-light: #f5a623;
+            --amber-dark: #c46e00;
+            --amber-glow: rgba(232, 135, 14, 0.15);
+            --amber-glow-strong: rgba(232, 135, 14, 0.3);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius: 8px;
+            --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font);
+            background: var(--charcoal);
+            color: var(--steel-bright);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            animation: page-fade-in 0.6s ease-out forwards;
+        }
+
+        a { color: var(--amber); text-decoration: none; transition: color var(--transition); }
+        a:hover { color: var(--amber-light); }
+
+        img { max-width: 100%; display: block; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== PAGE LOAD ANIMATION ===== */
+        @keyframes page-fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                        transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+        nav.scrolled {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.3);
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+        .nav-logo span { color: var(--amber); }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--steel-bright);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--amber);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover { color: var(--white); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Industrial background pattern */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 40%, rgba(232, 135, 14, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 20% 80%, rgba(232, 135, 14, 0.03) 0%, transparent 60%);
+            z-index: 1;
+        }
+
+        /* Geometric grid lines with pulsing animation */
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            animation: grid-pulse 4s ease-in-out infinite;
+        }
+        .hero-grid .line {
+            position: absolute;
+            background: rgba(232, 135, 14, 0.04);
+            transition: background-color 0.6s ease;
+        }
+        .hero-grid .line-h {
+            width: 100%;
+            height: 1px;
+        }
+        .hero-grid .line-v {
+            width: 1px;
+            height: 100%;
+        }
+        @keyframes grid-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .hero-grid:hover .line {
+            background: rgba(232, 135, 14, 0.12);
+        }
+
+        /* Floating geometric shapes - enhanced */
+        .hero-shapes {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            animation: shapes-container-pulse 3s ease-in-out infinite;
+        }
+        @keyframes shapes-container-pulse {
+            0%, 100% { filter: brightness(1) drop-shadow(0 0 0px rgba(232, 135, 14, 0)); }
+            50% { filter: brightness(1.1) drop-shadow(0 0 20px rgba(232, 135, 14, 0.1)); }
+        }
+        .geo-shape {
+            position: absolute;
+            border: 1px solid rgba(232, 135, 14, 0.08);
+            animation: float-shape 20s ease-in-out infinite;
+            will-change: transform;
+        }
+        .geo-shape-1 {
+            width: 300px; height: 300px;
+            top: 10%; right: 5%;
+            border-radius: 50%;
+            animation-duration: 25s;
+        }
+        .geo-shape-2 {
+            width: 150px; height: 150px;
+            top: 60%; right: 15%;
+            transform: rotate(45deg);
+            animation-duration: 18s;
+            animation-delay: -5s;
+        }
+        .geo-shape-3 {
+            width: 200px; height: 200px;
+            top: 30%; right: 25%;
+            border-radius: 50%;
+            border-color: rgba(232, 135, 14, 0.05);
+            animation-duration: 22s;
+            animation-delay: -10s;
+        }
+        .geo-shape-4 {
+            width: 80px; height: 80px;
+            bottom: 20%; left: 10%;
+            transform: rotate(30deg);
+            animation-duration: 15s;
+            animation-delay: -3s;
+        }
+
+        @keyframes float-shape {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(15px, -20px) rotate(5deg); }
+            50% { transform: translate(-10px, 15px) rotate(-3deg); }
+            75% { transform: translate(20px, 10px) rotate(7deg); }
+        }
+
+        /* Spark particles */
+        .sparks {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .spark {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--amber);
+            border-radius: 50%;
+            opacity: 0;
+            animation: spark-fly 4s ease-in-out infinite;
+        }
+        .spark:nth-child(1) { top: 25%; right: 20%; animation-delay: 0s; }
+        .spark:nth-child(2) { top: 45%; right: 30%; animation-delay: 0.8s; }
+        .spark:nth-child(3) { top: 35%; right: 10%; animation-delay: 1.6s; }
+        .spark:nth-child(4) { top: 55%; right: 25%; animation-delay: 2.4s; }
+        .spark:nth-child(5) { top: 20%; right: 35%; animation-delay: 3.2s; }
+        .spark:nth-child(6) { top: 65%; right: 15%; animation-delay: 1.2s; }
+        .spark:nth-child(7) { top: 40%; right: 40%; animation-delay: 2.0s; }
+        .spark:nth-child(8) { top: 70%; right: 8%; animation-delay: 0.4s; }
+
+        @keyframes spark-fly {
+            0% { opacity: 0; transform: translate(0, 0) scale(0); }
+            20% { opacity: 1; transform: translate(-5px, -10px) scale(1); }
+            40% { opacity: 0.6; transform: translate(-15px, -30px) scale(0.8); }
+            100% { opacity: 0; transform: translate(-30px, -60px) scale(0); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--amber-glow);
+            border: 1px solid rgba(232, 135, 14, 0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--amber-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 28px;
+            animation: badge-glow 3s ease-in-out infinite alternate;
+        }
+        .hero-badge::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--amber);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes badge-glow {
+            from { box-shadow: 0 0 20px rgba(232, 135, 14, 0.05); }
+            to { box-shadow: 0 0 30px rgba(232, 135, 14, 0.1); }
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.08;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            animation: headline-rise 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            text-shadow: 0 2px 40px rgba(232, 135, 14, 0.1);
+        }
+        @keyframes headline-rise {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--amber), var(--amber-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--steel-text);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+            color: var(--charcoal);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 700;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(232, 135, 14, 0.2);
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(232, 135, 14, 0.45);
+            color: var(--charcoal);
+        }
+        .btn-primary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        .btn-primary:hover::before { left: 100%; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 36px;
+            background: transparent;
+            color: var(--white);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid var(--steel-light);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary:hover {
+            border-color: var(--amber);
+            color: var(--amber);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(232, 135, 14, 0.25);
+            background: rgba(232, 135, 14, 0.05);
+        }
+        .btn-secondary:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce-scroll 2s ease-in-out infinite;
+        }
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--steel-mid);
+        }
+        .scroll-indicator .arrow {
+            width: 20px;
+            height: 20px;
+            border-right: 2px solid var(--steel-mid);
+            border-bottom: 2px solid var(--steel-mid);
+            transform: rotate(45deg);
+        }
+        @keyframes bounce-scroll {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 120px 0;
+            position: relative;
+            animation: section-fade-in 0.8s ease-out;
+        }
+        @keyframes section-fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--steel-light), transparent);
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--amber);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+        .section-label::before {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background: var(--amber);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--white);
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--steel-bright);
+        }
+        .about-text p:first-of-type {
+            font-size: 1.1rem;
+            color: var(--white);
+        }
+
+        /* Industrial visual element */
+        .about-visual {
+            position: relative;
+            height: 480px;
+        }
+        .about-visual-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--steel), var(--charcoal-light));
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--steel-light);
+        }
+
+        /* Blueprint grid pattern */
+        .blueprint-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(232, 135, 14, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(232, 135, 14, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Gear animation */
+        .gear {
+            position: absolute;
+            border: 3px solid rgba(232, 135, 14, 0.15);
+            border-radius: 50%;
+            animation: spin-gear 20s linear infinite;
+        }
+        .gear::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: 30%;
+            border: 2px solid rgba(232, 135, 14, 0.15);
+            border-radius: 50%;
+        }
+        .gear-1 {
+            width: 200px; height: 200px;
+            top: 20%; left: 15%;
+        }
+        .gear-2 {
+            width: 140px; height: 140px;
+            top: 50%; right: 20%;
+            animation-direction: reverse;
+            animation-duration: 15s;
+        }
+        .gear-3 {
+            width: 100px; height: 100px;
+            bottom: 15%; left: 35%;
+            animation-duration: 12s;
+        }
+
+        @keyframes spin-gear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Measurement lines */
+        .measure-line {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .measure-line .line {
+            height: 1px;
+            background: var(--amber);
+            opacity: 0.3;
+        }
+        .measure-line .value {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--amber);
+            opacity: 0.5;
+            white-space: nowrap;
+        }
+        .measure-1 { bottom: 30%; left: 10%; }
+        .measure-1 .line { width: 80px; }
+        .measure-2 { top: 15%; right: 10%; }
+        .measure-2 .line { width: 60px; }
+
+        .about-visual .stamp {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            padding: 8px 16px;
+            border: 2px solid rgba(232, 135, 14, 0.3);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--amber);
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transform: rotate(-5deg);
+        }
+
+        /* ===== SERVICES ===== */
+        .services {
+            padding: 120px 0;
+            background: var(--charcoal-light);
+            position: relative;
+        }
+        .services::before, .services::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--steel-light), transparent);
+        }
+        .services::before { top: 0; }
+        .services::after { bottom: 0; }
+
+        .services-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+        .services-header p {
+            color: var(--steel-text);
+            font-size: 1.05rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--charcoal);
+            border: 1px solid var(--steel-light);
+            border-radius: 12px;
+            padding: 40px 28px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--amber), var(--amber-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(232, 135, 14, 0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(232, 135, 14, 0.05);
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--amber-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: all var(--transition);
+        }
+        .service-card:hover .service-icon {
+            background: var(--amber-glow-strong);
+            transform: scale(1.05);
+        }
+
+        /* SVG icons */
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--amber);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--steel-text);
+            line-height: 1.7;
+        }
+
+        .service-card .service-features {
+            margin-top: 20px;
+            list-style: none;
+        }
+        .service-features li {
+            font-size: 0.82rem;
+            color: var(--steel-bright);
+            padding: 6px 0;
+            border-top: 1px solid var(--steel);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .service-features li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--amber);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--steel), var(--charcoal));
+            position: relative;
+            overflow: hidden;
+        }
+        .stats::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(232, 135, 14, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 50%, rgba(232, 135, 14, 0.04) 0%, transparent 50%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            position: relative;
+        }
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--steel-light), transparent);
+        }
+
+        .stat-number {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 900;
+            color: var(--amber);
+            line-height: 1;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+        .stat-suffix {
+            font-size: 0.6em;
+            font-weight: 700;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--steel-bright);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* ===== PARALLAX DIVIDER ===== */
+        .parallax-divider {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+        .parallax-divider .bg {
+            position: absolute;
+            inset: -50px;
+            background:
+                linear-gradient(135deg, var(--charcoal) 0%, var(--steel) 50%, var(--charcoal) 100%);
+            z-index: 0;
+            will-change: transform;
+        }
+        .parallax-divider .overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 50%, rgba(232, 135, 14, 0.08), transparent 60%),
+                linear-gradient(180deg, var(--charcoal), transparent 20%, transparent 80%, var(--charcoal));
+            z-index: 1;
+            animation: overlay-shift 6s ease-in-out infinite;
+        }
+        @keyframes overlay-shift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+
+        /* Animated welding sparks for divider */
+        .weld-sparks {
+            position: absolute;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+        }
+        .weld-spark {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--amber-light);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--amber), 0 0 12px var(--amber);
+            animation: weld-particle 3s ease-out infinite;
+        }
+        .weld-spark:nth-child(1) { left: 30%; top: 50%; animation-delay: 0s; }
+        .weld-spark:nth-child(2) { left: 31%; top: 48%; animation-delay: 0.2s; }
+        .weld-spark:nth-child(3) { left: 29%; top: 52%; animation-delay: 0.4s; }
+        .weld-spark:nth-child(4) { left: 32%; top: 49%; animation-delay: 0.6s; }
+        .weld-spark:nth-child(5) { left: 28%; top: 51%; animation-delay: 0.8s; }
+        .weld-spark:nth-child(6) { left: 30%; top: 47%; animation-delay: 1.0s; }
+        .weld-spark:nth-child(7) { left: 31%; top: 53%; animation-delay: 1.2s; }
+        .weld-spark:nth-child(8) { left: 29%; top: 50%; animation-delay: 1.4s; }
+        .weld-spark:nth-child(9) { left: 30%; top: 49%; animation-delay: 1.6s; }
+        .weld-spark:nth-child(10) { left: 31%; top: 51%; animation-delay: 1.8s; }
+
+        @keyframes weld-particle {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(
+                    calc((var(--dx, 1)) * 80px),
+                    calc((var(--dy, 1)) * 60px)
+                ) scale(0);
+            }
+        }
+        .weld-spark:nth-child(1) { --dx: 1; --dy: -2; }
+        .weld-spark:nth-child(2) { --dx: 2; --dy: -1; }
+        .weld-spark:nth-child(3) { --dx: -1; --dy: -2; }
+        .weld-spark:nth-child(4) { --dx: 3; --dy: -1.5; }
+        .weld-spark:nth-child(5) { --dx: -2; --dy: -2.5; }
+        .weld-spark:nth-child(6) { --dx: 1.5; --dy: -3; }
+        .weld-spark:nth-child(7) { --dx: -1.5; --dy: 1; }
+        .weld-spark:nth-child(8) { --dx: 2.5; --dy: -0.5; }
+        .weld-spark:nth-child(9) { --dx: -0.5; --dy: -3; }
+        .weld-spark:nth-child(10) { --dx: 1; --dy: 1.5; }
+
+        .parallax-quote {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            max-width: 700px;
+            padding: 0 24px;
+        }
+        .parallax-quote blockquote {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 300;
+            color: var(--white);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .parallax-quote cite {
+            font-size: 0.85rem;
+            color: var(--amber);
+            font-style: normal;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--charcoal);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .testimonial-card {
+            background: var(--charcoal-light);
+            border: 1px solid var(--steel-light);
+            border-radius: 12px;
+            padding: 36px;
+            transition: all var(--transition);
+            position: relative;
+        }
+        .testimonial-card:hover {
+            border-color: rgba(232, 135, 14, 0.2);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .testimonial-stars svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--amber);
+        }
+
+        .testimonial-card blockquote {
+            font-size: 0.95rem;
+            color: var(--steel-bright);
+            line-height: 1.8;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--amber-glow-strong), var(--amber-glow));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--amber);
+            flex-shrink: 0;
+        }
+        .testimonial-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: var(--steel-text);
+        }
+
+        /* ===== CTA / CONTACT ===== */
+        .cta {
+            padding: 120px 0;
+            background: var(--charcoal-light);
+            position: relative;
+            overflow: hidden;
+        }
+        .cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232, 135, 14, 0.06) 0%, transparent 70%);
+        }
+
+        .cta-inner {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-inner .section-title {
+            margin-bottom: 16px;
+        }
+        .cta-inner p {
+            font-size: 1.1rem;
+            color: var(--steel-text);
+            margin-bottom: 40px;
+        }
+
+        .cta-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            max-width: 560px;
+            margin: 0 auto 20px;
+        }
+        .cta-form input,
+        .cta-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--charcoal);
+            border: 1px solid var(--steel-light);
+            border-radius: var(--radius);
+            color: var(--white);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            transition: border-color var(--transition);
+            outline: none;
+        }
+        .cta-form input:focus,
+        .cta-form textarea:focus {
+            border-color: var(--amber);
+        }
+        .cta-form input::placeholder,
+        .cta-form textarea::placeholder {
+            color: var(--steel-mid);
+        }
+        .cta-form .full-width {
+            grid-column: 1 / -1;
+        }
+        .cta-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .cta-form .btn-primary {
+            grid-column: 1 / -1;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .cta-details {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+        .cta-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .cta-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--amber-glow);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .cta-detail-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--amber);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .cta-detail-text {
+            text-align: left;
+        }
+        .cta-detail-text span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--steel-text);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-detail-text strong {
+            color: var(--white);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            padding: 48px 0;
+            border-top: 1px solid var(--steel);
+        }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .footer-logo span { color: var(--amber); }
+        footer p {
+            font-size: 0.8rem;
+            color: var(--steel-mid);
+        }
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+        .footer-links a {
+            font-size: 0.8rem;
+            color: var(--steel-text);
+        }
+        .footer-links a:hover {
+            color: var(--amber);
+        }
+
+        /* ===== BUILT BY BADGE ===== */
+        .built-by {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+            border: none;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 30px rgba(232, 135, 14, 0.35);
+            animation: badge-entrance 0.6s ease-out 0.5s both;
+        }
+        @keyframes badge-entrance {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .built-by:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 12px 40px rgba(232, 135, 14, 0.5);
+            background: linear-gradient(135deg, var(--amber-light), var(--amber));
+            color: var(--charcoal);
+        }
+        .built-by:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+        .built-by .bolt {
+            font-size: 1.1rem;
+            animation: bolt-flash 2s ease-in-out infinite;
+        }
+        @keyframes bolt-flash {
+            0%, 100% { opacity: 1; text-shadow: none; }
+            50% { opacity: 0.6; text-shadow: 0 0 10px rgba(232, 135, 14, 0.5); }
+        }
+        .built-by strong {
+            color: var(--charcoal);
+            font-weight: 700;
+        }
+
+        /* ===== MOBILE ===== */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-grid { gap: 48px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 26, 26, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 24px;
+                gap: 20px;
+                border-bottom: 1px solid var(--steel-light);
+            }
+            .nav-toggle { display: flex; }
+
+            .hero { min-height: 90vh; padding-top: 100px; }
+            .hero h1 { letter-spacing: -1px; }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .about-visual { height: 320px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+            .stat-item:not(:last-child)::after { display: none; }
+
+            .testimonials-grid { grid-template-columns: 1fr; }
+
+            .cta-form { grid-template-columns: 1fr; }
+
+            .cta-details {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .parallax-divider { height: 300px; }
+
+            .built-by {
+                bottom: 12px;
+                right: 12px;
+                padding: 8px 12px;
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+            .hero-cta { flex-direction: column; }
+            .hero-cta .btn-primary,
+            .hero-cta .btn-secondary { width: 100%; justify-content: center; }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                letter-spacing: -0.5px;
+                text-shadow: none;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 28px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 14px 24px;
+                font-size: 0.85rem;
+            }
+
+            .built-by {
+                bottom: 16px;
+                right: 16px;
+                padding: 10px 14px;
+                font-size: 0.75rem;
+            }
+
+            .built-by .bolt {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .service-card {
+                padding: 28px 20px;
+            }
+
+            .testimonial-card {
+                padding: 24px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .about-visual {
+                height: 280px;
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding-top: 80px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 16px;
+            }
+
+            .hero-badge {
+                font-size: 0.7rem;
+                padding: 6px 12px;
+                margin-bottom: 16px;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 20px;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 20px;
+                font-size: 0.8rem;
+                letter-spacing: 0.3px;
+            }
+
+            .hero-cta {
+                gap: 8px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+                line-height: 1.2;
+            }
+
+            .section-label {
+                font-size: 0.7rem;
+            }
+
+            .service-card {
+                padding: 24px 16px;
+            }
+
+            .service-card h3 {
+                font-size: 1rem;
+            }
+
+            .service-features {
+                font-size: 0.85rem;
+            }
+
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .testimonial-card blockquote {
+                font-size: 0.95rem;
+                margin-bottom: 16px;
+            }
+
+            .stat-item {
+                padding: 20px 12px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            .stat-label {
+                font-size: 0.8rem;
+            }
+
+            .built-by {
+                bottom: 12px;
+                right: 12px;
+                padding: 8px 12px;
+                font-size: 0.7rem;
+            }
+
+            .about-grid {
+                gap: 30px;
+            }
+
+            .cta-detail {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+
+            .parallax-divider {
+                height: 300px;
+            }
+        }
+        /* ===== REDUCED MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-logo">FORGE <span>&</span> FLOW</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="line line-h" style="top: 20%"></div>
+            <div class="line line-h" style="top: 40%"></div>
+            <div class="line line-h" style="top: 60%"></div>
+            <div class="line line-h" style="top: 80%"></div>
+            <div class="line line-v" style="left: 25%"></div>
+            <div class="line line-v" style="left: 50%"></div>
+            <div class="line line-v" style="left: 75%"></div>
+        </div>
+
+        <div class="hero-shapes">
+            <div class="geo-shape geo-shape-1"></div>
+            <div class="geo-shape geo-shape-2"></div>
+            <div class="geo-shape geo-shape-3"></div>
+            <div class="geo-shape geo-shape-4"></div>
+        </div>
+
+        <div class="sparks">
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+            <div class="spark"></div>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">Precision Metal Fabrication</div>
+                <h1>Built to Spec.<br><span>Forged to Last.</span></h1>
+                <p>Serving automotive and aerospace industries with precision CNC machining, expert welding, and full-scale assembly. 18 years of uncompromising quality from Columbus, Ohio.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Request a Quote</a>
+                    <a href="#services" class="btn-secondary">Our Capabilities</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="arrow"></div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <div class="section-label reveal">Our Story</div>
+                    <h2 class="section-title reveal reveal-delay-1">Precision Is Not a Goal.<br>It's Our Standard.</h2>
+                    <p class="reveal reveal-delay-2">Founded in 2008 by master machinist Dave Kowalski, Forge & Flow Manufacturing started with a single CNC mill and a commitment: every part leaves our floor at spec or it doesn't leave at all.</p>
+                    <p class="reveal reveal-delay-3">Today, our 32,000 sq. ft. facility in Columbus houses 14 CNC machines, a full welding bay, and a dedicated quality lab. We serve Tier 1 and Tier 2 suppliers in automotive and aerospace, delivering tight-tolerance components that keep critical systems running.</p>
+                    <p class="reveal reveal-delay-4">Our 45-person team brings an average of 12 years of shop floor experience. We're AS9100 certified and ITAR registered. When the margin for error is measured in microns, experience matters.</p>
+                </div>
+                <div class="about-visual reveal reveal-delay-2">
+                    <div class="about-visual-inner">
+                        <div class="blueprint-grid"></div>
+                        <div class="gear gear-1"></div>
+                        <div class="gear gear-2"></div>
+                        <div class="gear gear-3"></div>
+                        <div class="measure-line measure-1">
+                            <div class="line"></div>
+                            <div class="value">0.0005"</div>
+                        </div>
+                        <div class="measure-line measure-2">
+                            <div class="line"></div>
+                            <div class="value">AS9100:D</div>
+                        </div>
+                        <div class="stamp">ISO Certified</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <div class="section-label reveal">Capabilities</div>
+                <h2 class="section-title reveal reveal-delay-1">End-to-End Metal Fabrication</h2>
+                <p class="reveal reveal-delay-2">From raw stock to finished assembly, we handle every stage of the manufacturing process under one roof.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- CNC Machining -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+                        </svg>
+                    </div>
+                    <h3>CNC Machining</h3>
+                    <p>Multi-axis precision milling and turning for complex geometries. Tolerances to +/- 0.0005".</p>
+                    <ul class="service-features">
+                        <li>3, 4 & 5-axis milling</li>
+                        <li>CNC turning & Swiss</li>
+                        <li>Aluminum, steel, titanium, Inconel</li>
+                        <li>Prototype to production</li>
+                    </ul>
+                </div>
+
+                <!-- Welding -->
+                <div class="service-card reveal reveal-delay-1">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C12 2 8 8 8 12a4 4 0 0 0 8 0c0-4-4-10-4-10z"/>
+                            <path d="M12 22v-4"/>
+                            <path d="M9 18h6"/>
+                        </svg>
+                    </div>
+                    <h3>Welding & Joining</h3>
+                    <p>Certified welders executing TIG, MIG, and orbital welds to AWS D17.1 aerospace standards.</p>
+                    <ul class="service-features">
+                        <li>TIG, MIG & orbital welding</li>
+                        <li>AWS D17.1 certified</li>
+                        <li>Stainless, aluminum, exotics</li>
+                        <li>Weld inspection & NDE</li>
+                    </ul>
+                </div>
+
+                <!-- Assembly -->
+                <div class="service-card reveal reveal-delay-2">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="6" width="8" height="12" rx="1"/>
+                            <rect x="14" y="6" width="8" height="12" rx="1"/>
+                            <path d="M10 12h4"/>
+                        </svg>
+                    </div>
+                    <h3>Assembly</h3>
+                    <p>Complete mechanical and electro-mechanical assembly with integrated testing and packaging.</p>
+                    <ul class="service-features">
+                        <li>Sub-assembly & full builds</li>
+                        <li>Torque-critical fastening</li>
+                        <li>Kitting & packaging</li>
+                        <li>Just-in-time delivery</li>
+                    </ul>
+                </div>
+
+                <!-- Quality -->
+                <div class="service-card reveal reveal-delay-3">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/>
+                        </svg>
+                    </div>
+                    <h3>Quality Assurance</h3>
+                    <p>In-house CMM inspection, first article reports, and full traceability on every production run.</p>
+                    <ul class="service-features">
+                        <li>Zeiss CMM inspection</li>
+                        <li>FAIR / PPAP documentation</li>
+                        <li>AS9100:D & ITAR compliant</li>
+                        <li>99.7% quality acceptance rate</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-number"><span class="counter" data-target="45">0</span></div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-1">
+                    <div class="stat-number"><span class="counter" data-target="18">0</span></div>
+                    <div class="stat-label">Years in Business</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-2">
+                    <div class="stat-number"><span class="counter" data-target="500">0</span><span class="stat-suffix">+</span></div>
+                    <div class="stat-label">Clients Served</div>
+                </div>
+                <div class="stat-item reveal reveal-delay-3">
+                    <div class="stat-number"><span class="counter" data-target="99.7" data-decimal="true">0</span><span class="stat-suffix">%</span></div>
+                    <div class="stat-label">Quality Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Divider -->
+    <section class="parallax-divider">
+        <div class="bg" id="parallaxBg"></div>
+        <div class="overlay"></div>
+        <div class="weld-sparks">
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+            <div class="weld-spark"></div>
+        </div>
+        <div class="parallax-quote reveal">
+            <blockquote>"We don't cut corners. We machine them to spec."</blockquote>
+            <cite>Dave Kowalski, Founder</cite>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header">
+                <div class="section-label reveal">Client Testimonials</div>
+                <h2 class="section-title reveal reveal-delay-1">Trusted by Industry Leaders</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"We moved our precision machining to Forge & Flow three years ago. Reject rates dropped from 2.1% to under 0.3%. Their quality lab catches things before they ever reach our floor. They've become an extension of our own team."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MR</div>
+                        <div class="testimonial-info">
+                            <h4>Michael Reeves</h4>
+                            <p>VP of Supply Chain, Buckeye Aero Components</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-1">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"We needed a fabrication partner who could handle tight tolerances on titanium housings. Forge & Flow delivered prototypes in 10 days and had production-ready parts running within six weeks. On-time, every time since."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SL</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Lin</h4>
+                            <p>Director of Engineering, Apex Powertrain</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal reveal-delay-2">
+                    <div class="testimonial-stars">
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <blockquote>"What sets Forge & Flow apart is communication. Dave's team sends progress photos, proactively flags potential design issues, and treats our deadlines like their own. That's rare in this industry. We won't go anywhere else."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JT</div>
+                        <div class="testimonial-info">
+                            <h4>James Torres</h4>
+                            <p>Procurement Manager, Great Lakes Defense Systems</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <div class="cta-inner">
+                <div class="section-label reveal">Get Started</div>
+                <h2 class="section-title reveal reveal-delay-1">Ready to Build Something?</h2>
+                <p class="reveal reveal-delay-2">Send us your specs, drawings, or just an idea. We'll get back to you within one business day with a preliminary assessment.</p>
+
+                <form class="cta-form reveal reveal-delay-3" onsubmit="event.preventDefault();">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="text" placeholder="Company" class="full-width">
+                    <textarea placeholder="Tell us about your project..." class="full-width"></textarea>
+                    <button type="submit" class="btn-primary">Send Inquiry</button>
+                </form>
+
+                <div class="cta-details reveal reveal-delay-4">
+                    <div class="cta-detail">
+                        <div class="cta-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div class="cta-detail-text">
+                            <span>Phone</span>
+                            <strong>(614) 555-0192</strong>
+                        </div>
+                    </div>
+                    <div class="cta-detail">
+                        <div class="cta-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div class="cta-detail-text">
+                            <span>Email</span>
+                            <strong>quotes@forgeandflow.com</strong>
+                        </div>
+                    </div>
+                    <div class="cta-detail">
+                        <div class="cta-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div class="cta-detail-text">
+                            <span>Location</span>
+                            <strong>Columbus, Ohio</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-logo">FORGE <span>&</span> FLOW</div>
+                <p>&copy; 2026 Forge & Flow Manufacturing. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Built By Badge -->
+    <a href="https://aiopssystem.com" target="_blank" rel="noopener" class="built-by">
+        <span class="bolt">&#9889;</span> Built by <strong>AI Ops System</strong>
+    </a>
+
+    <script>
+        // ===== SCROLL REVEAL (Intersection Observer) =====
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ===== COUNTER ANIMATION =====
+        const counters = document.querySelectorAll('.counter');
+        let countersAnimated = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !countersAnimated) {
+                    countersAnimated = true;
+                    counters.forEach(counter => {
+                        const target = parseFloat(counter.dataset.target);
+                        const isDecimal = counter.dataset.decimal === 'true';
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            // Ease out cubic
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            const current = eased * target;
+
+                            counter.textContent = isDecimal
+                                ? current.toFixed(1)
+                                : Math.floor(current);
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = isDecimal
+                                    ? target.toFixed(1)
+                                    : target;
+                            }
+                        }
+                        requestAnimationFrame(updateCounter);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) counterObserver.observe(statsSection);
+
+        // ===== NAVBAR SCROLL EFFECT + PARALLAX (single handler) =====
+        const navbar = document.getElementById('navbar');
+        const parallaxBg = document.getElementById('parallaxBg');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (parallaxBg) {
+                const rect = parallaxBg.closest('.parallax-divider').getBoundingClientRect();
+                const speed = 0.3;
+                const yPos = rect.top * speed;
+                parallaxBg.style.transform = `translateY(${yPos}px)`;
+            }
+        }, { passive: true });
+
+        // ===== MOBILE NAV TOGGLE =====
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile nav on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // ===== BUTTON MICRO-INTERACTIONS =====
+        const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+        buttons.forEach(button => {
+            button.addEventListener('mousedown', function(e) {
+                this.style.transform = 'translateY(-1px) scale(0.98)';
+            });
+            button.addEventListener('mouseup', function(e) {
+                this.style.transform = '';
+            });
+            button.addEventListener('mouseleave', function(e) {
+                this.style.transform = '';
+            });
+
+            // Add ripple effect on click
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.width = '10px';
+                ripple.style.height = '10px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                ripple.style.animation = 'ripple-expand 0.6s ease-out forwards';
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation keyframe if not already present
+        if (!document.querySelector('style[data-ripple]')) {
+            const style = document.createElement('style');
+            style.setAttribute('data-ripple', 'true');
+            style.textContent = `
+                @keyframes ripple-expand {
+                    from {
+                        transform: translate(-50%, -50%) scale(0);
+                        opacity: 0.5;
+                    }
+                    to {
+                        transform: translate(-50%, -50%) scale(1);
+                        width: 200px;
+                        height: 200px;
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    </script>
+
+</body>
+</html>

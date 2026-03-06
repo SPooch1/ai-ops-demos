@@ -1,0 +1,2496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridgeline CPA Group | Business Accounting & Strategic Advisory | Dublin, Ohio</title>
+    <meta name="description" content="Ridgeline CPA Group provides proactive tax planning, strategic advisory, and full-service accounting for businesses in Central Ohio. Construction, healthcare, professional services, and manufacturing specialists.">
+    <meta property="og:title" content="Ridgeline CPA Group | Business Accounting & Strategic Advisory">
+    <meta property="og:description" content="Your business deserves a financial partner, not just a tax preparer. Proactive tax planning and strategic advisory in Dublin, Ohio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTNHERG4QD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JTNHERG4QD');
+    </script>
+    <style>
+        /* ============================================
+           RESET & BASE
+           ============================================ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --forest: #1a3a2a;
+            --forest-deep: #0f2a1c;
+            --forest-mid: #2d5a3f;
+            --forest-light: #3d7a55;
+            --forest-pale: #e8f0eb;
+            --forest-mist: #f0f5f2;
+            --gold: #b8922a;
+            --gold-light: #d4aa3a;
+            --gold-pale: #f5efd8;
+            --gold-glow: rgba(184, 146, 42, 0.15);
+            --cream: #f8f5f0;
+            --cream-dark: #ede8df;
+            --white: #ffffff;
+            --text: #1a1a1a;
+            --text-mid: #3d4a44;
+            --text-light: #5f6b64;
+            --text-lighter: #8a9490;
+            --border: #dde3df;
+            --border-light: #e8ece9;
+            --shadow-sm: 0 1px 3px rgba(26, 58, 42, 0.06);
+            --shadow-md: 0 4px 20px rgba(26, 58, 42, 0.08);
+            --shadow-lg: 0 12px 40px rgba(26, 58, 42, 0.1);
+            --shadow-xl: 0 20px 60px rgba(26, 58, 42, 0.12);
+            --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================
+           REVEAL ANIMATIONS
+           ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s var(--transition), transform 0.7s var(--transition);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ============================================
+           HEADER & NAVIGATION
+           ============================================ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 0;
+            transition: var(--transition);
+        }
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 12px rgba(26, 58, 42, 0.08);
+            padding: 10px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            background: var(--forest);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: linear-gradient(to top,
+                var(--forest-mid) 0%,
+                var(--forest-mid) 20%,
+                var(--forest-light) 20%,
+                var(--forest-light) 45%,
+                transparent 45%
+            );
+            clip-path: polygon(0% 100%, 25% 40%, 45% 70%, 65% 20%, 85% 55%, 100% 100%);
+        }
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            right: 7px;
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--forest);
+            line-height: 1.1;
+        }
+        .logo-sub {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            transition: color var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width var(--transition);
+        }
+        .nav-links a:hover { color: var(--forest); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn-portal {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--forest);
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .btn-portal:hover {
+            border-color: var(--forest);
+            background: var(--forest-pale);
+        }
+        .btn-schedule {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--forest);
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .btn-schedule:hover {
+            background: var(--forest-mid);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(26, 58, 42, 0.2);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--forest);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) { opacity: 0; }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ============================================
+           HERO SECTION
+           ============================================ */
+        .hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(170deg, var(--white) 0%, var(--cream) 50%, var(--forest-mist) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -150px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(26, 58, 42, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 6px 16px 6px 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            margin-bottom: 24px;
+        }
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--forest-light);
+            border-radius: 50%;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.3); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--forest-deep);
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--forest-mid);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-mid);
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--forest);
+            padding: 14px 28px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .btn-primary:hover {
+            background: var(--forest-mid);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 58, 42, 0.25);
+        }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--forest);
+            background: transparent;
+            padding: 14px 28px;
+            border: 2px solid var(--forest);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        .btn-secondary:hover {
+            background: var(--forest);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Hero stats row */
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+        .hero-stat {
+            position: relative;
+            padding-left: 16px;
+        }
+        .hero-stat::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+        .hero-stat-number {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--forest);
+            line-height: 1.2;
+        }
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Hero visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-graphic {
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 1;
+            position: relative;
+        }
+        .hero-circle-outer {
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--border-light);
+            border-radius: 50%;
+            animation: rotate-slow 60s linear infinite;
+        }
+        .hero-circle-outer::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-circle-inner {
+            position: absolute;
+            inset: 40px;
+            border: 1px dashed var(--border);
+            border-radius: 50%;
+            animation: rotate-slow 45s linear infinite reverse;
+        }
+
+        .hero-center-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 32px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            min-width: 200px;
+        }
+        .hero-center-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--forest-pale);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        .hero-center-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .hero-center-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-bottom: 4px;
+        }
+        .hero-center-sub {
+            font-size: 0.75rem;
+            color: var(--text-lighter);
+        }
+
+        /* Floating orbit cards */
+        .orbit-card {
+            position: absolute;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius);
+            padding: 12px 16px;
+            box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            animation: float 6s ease-in-out infinite;
+        }
+        .orbit-card:nth-child(2) { animation-delay: -1.5s; }
+        .orbit-card:nth-child(3) { animation-delay: -3s; }
+        .orbit-card:nth-child(4) { animation-delay: -4.5s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .orbit-card-1 { top: 15%; right: -10px; }
+        .orbit-card-2 { top: 45%; left: -20px; }
+        .orbit-card-3 { bottom: 20%; right: -5px; }
+        .orbit-card-4 { bottom: 5%; left: 10%; }
+
+        .orbit-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .orbit-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke-width: 1.5;
+            fill: none;
+        }
+        .orbit-icon-green { background: var(--forest-pale); }
+        .orbit-icon-green svg { stroke: var(--forest); }
+        .orbit-icon-gold { background: var(--gold-pale); }
+        .orbit-icon-gold svg { stroke: var(--gold); }
+
+        .orbit-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-mid);
+        }
+        .orbit-value {
+            font-size: 0.7rem;
+            color: var(--text-lighter);
+        }
+
+        /* ============================================
+           TRUST BAR
+           ============================================ */
+        .trust-bar {
+            padding: 32px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            background: var(--white);
+        }
+        .trust-bar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-light);
+            letter-spacing: 0.02em;
+        }
+        .trust-item svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--forest-light);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+        .section { padding: 100px 0; }
+        .section-dark {
+            background: var(--forest-deep);
+            color: var(--white);
+        }
+        .section-cream { background: var(--cream); }
+        .section-mist { background: var(--forest-mist); }
+
+        .section-header {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 60px;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-dark .section-label { color: var(--gold-light); }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--forest-deep);
+            margin-bottom: 16px;
+        }
+        .section-dark .section-title { color: var(--white); }
+
+        .section-subtitle {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+        .section-dark .section-subtitle { color: rgba(255, 255, 255, 0.65); }
+
+        /* ============================================
+           WHO WE SERVE
+           ============================================ */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .industry-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 32px 24px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform var(--transition);
+        }
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .industry-card:hover::before { transform: scaleX(1); }
+
+        .industry-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--forest-pale);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            transition: var(--transition);
+        }
+        .industry-card:hover .industry-icon {
+            background: var(--forest);
+        }
+        .industry-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 1.5;
+            transition: var(--transition);
+        }
+        .industry-card:hover .industry-icon svg { stroke: var(--white); }
+
+        .industry-name {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            margin-bottom: 8px;
+        }
+        .industry-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           SERVICES
+           ============================================ */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 36px 28px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .service-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .service-icon-business { background: var(--forest-pale); }
+        .service-icon-business svg { stroke: var(--forest); }
+        .service-icon-individual { background: #eef0fa; }
+        .service-icon-individual svg { stroke: #4f5da6; }
+        .service-icon-advisory { background: var(--gold-pale); }
+        .service-icon-advisory svg { stroke: var(--gold); }
+
+        .service-category {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-lighter);
+        }
+        .service-name {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            margin-bottom: 12px;
+        }
+        .service-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .service-list {
+            list-style: none;
+        }
+        .service-list li {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .service-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 13px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        /* ============================================
+           TAX CENTER
+           ============================================ */
+        .tax-center-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .tax-deadlines-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+        }
+        .tax-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .tax-card-title svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--gold-light);
+            fill: none;
+            stroke-width: 1.5;
+        }
+
+        .deadline-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .deadline-item:last-child { border-bottom: none; }
+
+        .deadline-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .deadline-date {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            min-width: 52px;
+            text-align: center;
+            background: rgba(184, 146, 42, 0.12);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .deadline-name {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .deadline-status {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .deadline-status.upcoming {
+            background: rgba(184, 146, 42, 0.15);
+            color: var(--gold-light);
+        }
+        .deadline-status.soon {
+            background: rgba(234, 179, 8, 0.15);
+            color: #fbbf24;
+        }
+        .deadline-status.passed {
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Document checklist */
+        .checklist-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+        }
+        .checklist-intro {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .checklist-items { list-style: none; }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+        }
+        .checklist-item:hover { opacity: 0.8; }
+        .checklist-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+        .checklist-item.checked .checklist-box {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .checklist-box svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--white);
+            fill: none;
+            stroke-width: 2.5;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .checklist-item.checked .checklist-box svg { opacity: 1; }
+        .checklist-label {
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+        .checklist-item.checked .checklist-label {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.35);
+        }
+        .checklist-progress {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .checklist-bar {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .checklist-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--gold);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+        .checklist-percent {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            min-width: 32px;
+        }
+
+        /* ============================================
+           CLIENT EXPERIENCE
+           ============================================ */
+        .experience-timeline {
+            display: flex;
+            gap: 0;
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 36px;
+            right: 36px;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .exp-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 12px;
+        }
+        .exp-step-number {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            z-index: 2;
+            transition: var(--transition);
+        }
+        .exp-step:hover .exp-step-number {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px var(--gold-glow);
+        }
+        .exp-step-number svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .exp-step-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            margin-bottom: 8px;
+        }
+        .exp-step-desc {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           TEAM
+           ============================================ */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+        .team-card {
+            text-align: center;
+            transition: var(--transition);
+        }
+        .team-card:hover { transform: translateY(-4px); }
+
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .team-photo-1 .team-photo-inner { background: var(--forest); }
+        .team-photo-2 .team-photo-inner { background: var(--forest-mid); }
+        .team-photo-3 .team-photo-inner { background: #4f5da6; }
+        .team-photo-4 .team-photo-inner { background: var(--gold); }
+
+        .team-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+        .team-card:hover .team-photo::after {
+            border-color: var(--gold);
+        }
+
+        .team-name {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            margin-bottom: 2px;
+        }
+        .team-creds {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.82rem;
+            color: var(--text-light);
+        }
+
+        /* ============================================
+           INSIGHTS
+           ============================================ */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .insight-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .insight-img {
+            height: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        .insight-img-1 { background: linear-gradient(135deg, var(--forest-deep) 0%, var(--forest-mid) 100%); }
+        .insight-img-2 { background: linear-gradient(135deg, #2c3e6b 0%, #4f5da6 100%); }
+        .insight-img-3 { background: linear-gradient(135deg, var(--gold) 0%, #8b6914 100%); }
+
+        .insight-img-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .insight-img-text span {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.15);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .insight-content {
+            padding: 24px;
+        }
+        .insight-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .insight-title {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+        .insight-excerpt {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           CTA SECTION
+           ============================================ */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--forest);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(184, 146, 42, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        .cta-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 2.5vw, 2rem);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .cta-text {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 32px;
+            position: relative;
+        }
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            background: var(--gold);
+            padding: 16px 36px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+        .btn-cta:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(184, 146, 42, 0.3);
+        }
+
+        /* ============================================
+           CONTACT SECTION
+           ============================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+        .contact-info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .contact-info-item {
+            display: flex;
+            gap: 16px;
+        }
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--forest-pale);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .contact-info-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--forest);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .contact-info-label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-lighter);
+            margin-bottom: 2px;
+        }
+        .contact-info-value {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .contact-map-placeholder {
+            margin-top: 28px;
+            background: var(--forest-mist);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-map-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(rgba(26, 58, 42, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 58, 42, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .map-pin {
+            width: 32px;
+            height: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .map-pin svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--forest);
+        }
+
+        /* Contact form */
+        .contact-form-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            box-shadow: var(--shadow-md);
+        }
+        .contact-form-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest-deep);
+            margin-bottom: 24px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            margin-bottom: 6px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--cream);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: var(--transition);
+            outline: none;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--forest);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(26, 58, 42, 0.08);
+        }
+        .form-group select { cursor: pointer; }
+        .form-group select.has-value { color: var(--text); }
+        .form-group textarea { min-height: 100px; resize: vertical; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--forest);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-submit:hover {
+            background: var(--forest-mid);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(26, 58, 42, 0.2);
+        }
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        .form-success.show {
+            display: block;
+        }
+        .form-success p {
+            font-size: 1rem;
+            color: var(--forest);
+            font-weight: 500;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        .footer {
+            background: var(--forest-deep);
+            padding: 60px 0 24px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-brand .logo-text { color: var(--white); }
+        .footer-brand .logo-sub { color: rgba(255, 255, 255, 0.4); }
+        .footer-brand .logo-mark {
+            background: var(--forest-mid);
+        }
+        .footer-about {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-top: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-col-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 16px;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color var(--transition);
+        }
+        .footer-links a:hover { color: var(--gold-light); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-copy {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+        .footer-creds {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ============================================
+           BUILT BY BADGE
+           ============================================ */
+        .built-by {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 90;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--text-light);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        .built-by:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+            border-color: var(--gold);
+        }
+        .built-by-icon {
+            width: 18px;
+            height: 18px;
+            background: var(--forest);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .built-by-icon svg {
+            width: 10px;
+            height: 10px;
+            fill: var(--gold);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+            .hero-visual { max-width: 400px; margin: 0 auto; }
+            .industries-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta-group .btn-portal { display: none; }
+            .nav-toggle { display: flex; }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                border-bottom: 1px solid var(--border);
+                padding: 16px 24px;
+                gap: 16px;
+                box-shadow: var(--shadow-md);
+            }
+
+            .hero { padding: 120px 0 60px; }
+            .hero h1 { font-size: clamp(1.8rem, 5vw, 2.4rem); }
+            .hero-stats { gap: 24px; }
+            .hero-visual { display: none; }
+
+            .section { padding: 64px 0; }
+            .section-header { margin-bottom: 40px; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .tax-center-grid { grid-template-columns: 1fr; }
+            .insights-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .experience-timeline {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .experience-timeline::before {
+                top: 0;
+                bottom: 0;
+                left: 36px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+            .exp-step {
+                text-align: left;
+                padding-left: 88px;
+            }
+            .exp-step-number {
+                position: absolute;
+                left: 0;
+                top: 0;
+                margin: 0;
+                width: 56px;
+                height: 56px;
+            }
+
+            .built-by { bottom: 12px; right: 12px; padding: 6px 12px; font-size: 0.65rem; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            .hero { padding: 100px 0 48px; }
+            .hero-ctas { flex-direction: column; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .hero-stats { flex-direction: column; gap: 16px; }
+            .industries-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .trust-bar-inner { gap: 24px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 375px) {
+            html { font-size: 14px; }
+            .hero { padding: 90px 0 40px; }
+            .section { padding: 48px 0; }
+        }
+
+        /* ============================================
+           REDUCED MOTION
+           ============================================ */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================
+     HEADER
+     ============================================ -->
+<header class="header" id="header">
+    <div class="container">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <div class="logo-mark"></div>
+                <div>
+                    <div class="logo-text">Ridgeline</div>
+                    <div class="logo-sub">CPA Group</div>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#industries">Industries</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#tax-center">Tax Center</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-cta-group">
+                <a href="#" class="btn-portal">Client Portal</a>
+                <a href="#contact" class="btn-schedule">Schedule a Call</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ============================================
+     HERO
+     ============================================ -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge reveal">
+                    <div class="hero-badge-dot"></div>
+                    Accepting new business clients
+                </div>
+
+                <h1 class="reveal reveal-delay-1">Your business deserves a financial <em>partner</em>, not just a tax preparer.</h1>
+
+                <p class="hero-subtitle reveal reveal-delay-2">
+                    Ridgeline CPA Group delivers proactive tax strategy, year-round advisory, and industry-specific expertise for businesses ready to grow with confidence.
+                </p>
+
+                <div class="hero-ctas reveal reveal-delay-3">
+                    <a href="#contact" class="btn-primary">
+                        Schedule a Consultation
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#services" class="btn-secondary">Explore Our Services</a>
+                </div>
+
+                <div class="hero-stats reveal reveal-delay-4">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="18">0</div>
+                        <div class="hero-stat-label">Years in Dublin, OH</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="500" data-suffix="+">0</div>
+                        <div class="hero-stat-label">Businesses Served</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number" data-count="4">0</div>
+                        <div class="hero-stat-label">Industry Specializations</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal">
+                <div class="hero-graphic">
+                    <div class="hero-circle-outer"></div>
+                    <div class="hero-circle-inner"></div>
+
+                    <div class="hero-center-card">
+                        <div class="hero-center-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div class="hero-center-title">Ridgeline CPA</div>
+                        <div class="hero-center-sub">Strategic Advisory</div>
+                    </div>
+
+                    <!-- Floating orbit cards -->
+                    <div class="orbit-card orbit-card-1">
+                        <div class="orbit-icon orbit-icon-green">
+                            <svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <div>
+                            <div class="orbit-label">Tax Planning</div>
+                            <div class="orbit-value">Year-round strategy</div>
+                        </div>
+                    </div>
+
+                    <div class="orbit-card orbit-card-2">
+                        <div class="orbit-icon orbit-icon-gold">
+                            <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/></svg>
+                        </div>
+                        <div>
+                            <div class="orbit-label">Growth Advisory</div>
+                            <div class="orbit-value">CFO-level insight</div>
+                        </div>
+                    </div>
+
+                    <div class="orbit-card orbit-card-3">
+                        <div class="orbit-icon orbit-icon-green">
+                            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </div>
+                        <div>
+                            <div class="orbit-label">Compliance</div>
+                            <div class="orbit-value">Always current</div>
+                        </div>
+                    </div>
+
+                    <div class="orbit-card orbit-card-4">
+                        <div class="orbit-icon orbit-icon-gold">
+                            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <div>
+                            <div class="orbit-label">Client Portal</div>
+                            <div class="orbit-value">Secure access 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TRUST BAR
+     ============================================ -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                AICPA Member
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Ohio Society of CPAs
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg>
+                QuickBooks ProAdvisor
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Sage Intacct Partner
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================
+     WHO WE SERVE
+     ============================================ -->
+<section class="section section-cream" id="industries">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Who We Serve</div>
+            <h2 class="section-title">Industry Expertise That Goes Beyond the Numbers</h2>
+            <p class="section-subtitle">Generic accountants give generic advice. We specialize in four industries so we can spot opportunities others miss.</p>
+        </div>
+
+        <div class="industries-grid">
+            <div class="industry-card reveal">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V8l7-5 7 5v12"/><path d="M9 20v-6h6v6"/></svg>
+                </div>
+                <div class="industry-name">Construction & Real Estate</div>
+                <div class="industry-desc">Job costing, WIP reporting, percentage-of-completion, 1031 exchanges, and cost segregation studies.</div>
+            </div>
+
+            <div class="industry-card reveal reveal-delay-1">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+                <div class="industry-name">Healthcare & Medical</div>
+                <div class="industry-desc">Practice valuations, provider compensation models, HIPAA-aware processes, and multi-entity structuring.</div>
+            </div>
+
+            <div class="industry-card reveal reveal-delay-2">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="industry-name">Professional Services</div>
+                <div class="industry-desc">Firm profitability analysis, partner compensation, cash-to-accrual conversions, and succession planning.</div>
+            </div>
+
+            <div class="industry-card reveal reveal-delay-3">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <div class="industry-name">Manufacturing & Distribution</div>
+                <div class="industry-desc">Inventory accounting, R&D tax credits, transfer pricing, supply chain cost analysis, and multi-state nexus.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">What We Do</div>
+            <h2 class="section-title">Full-Service Accounting, Strategic Advisory</h2>
+            <p class="section-subtitle">From day-to-day bookkeeping to high-level strategic planning, we handle the financial side so you can run your business.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-icon-row">
+                    <div class="service-icon service-icon-business">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div class="service-category">Business</div>
+                </div>
+                <div class="service-name">Business Services</div>
+                <div class="service-desc">Comprehensive financial management for growing companies.</div>
+                <ul class="service-list">
+                    <li>Tax planning and preparation</li>
+                    <li>Bookkeeping and payroll</li>
+                    <li>Entity selection and structuring</li>
+                    <li>Multi-state tax compliance</li>
+                    <li>Financial statement preparation</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal reveal-delay-1">
+                <div class="service-icon-row">
+                    <div class="service-icon service-icon-individual">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="service-category">Individual</div>
+                </div>
+                <div class="service-name">Individual Services</div>
+                <div class="service-desc">Personal tax strategy for business owners and high earners.</div>
+                <ul class="service-list">
+                    <li>Individual tax preparation</li>
+                    <li>Retirement and estate planning</li>
+                    <li>Investment income optimization</li>
+                    <li>Charitable giving strategies</li>
+                    <li>Multi-state filing coordination</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal reveal-delay-2">
+                <div class="service-icon-row">
+                    <div class="service-icon service-icon-advisory">
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/></svg>
+                    </div>
+                    <div class="service-category">Advisory</div>
+                </div>
+                <div class="service-name">Strategic Advisory</div>
+                <div class="service-desc">High-level guidance for transitions, growth, and long-term planning.</div>
+                <ul class="service-list">
+                    <li>Fractional CFO services</li>
+                    <li>Business valuation</li>
+                    <li>M&A due diligence</li>
+                    <li>Succession and exit planning</li>
+                    <li>Cash flow forecasting</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TAX CENTER
+     ============================================ -->
+<section class="section section-dark" id="tax-center">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Tax Center</div>
+            <h2 class="section-title">Stay Ahead of Every Deadline</h2>
+            <p class="section-subtitle">Key dates and a quick document checklist so you always know where you stand.</p>
+        </div>
+
+        <div class="tax-center-grid">
+            <div class="tax-deadlines-card reveal">
+                <div class="tax-card-title">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                    2026 Key Deadlines
+                </div>
+
+                <div class="deadline-item">
+                    <div class="deadline-left">
+                        <div class="deadline-date">MAR 15</div>
+                        <div class="deadline-name">S-Corp & Partnership Returns</div>
+                    </div>
+                    <div class="deadline-status soon" id="deadline-mar15">10 days</div>
+                </div>
+                <div class="deadline-item">
+                    <div class="deadline-left">
+                        <div class="deadline-date">APR 15</div>
+                        <div class="deadline-name">Individual & C-Corp Returns</div>
+                    </div>
+                    <div class="deadline-status upcoming" id="deadline-apr15">41 days</div>
+                </div>
+                <div class="deadline-item">
+                    <div class="deadline-left">
+                        <div class="deadline-date">JUN 15</div>
+                        <div class="deadline-name">Q2 Estimated Payments</div>
+                    </div>
+                    <div class="deadline-status upcoming" id="deadline-jun15">102 days</div>
+                </div>
+                <div class="deadline-item">
+                    <div class="deadline-left">
+                        <div class="deadline-date">SEP 15</div>
+                        <div class="deadline-name">Extended Returns & Q3 Estimated</div>
+                    </div>
+                    <div class="deadline-status upcoming" id="deadline-sep15">194 days</div>
+                </div>
+                <div class="deadline-item">
+                    <div class="deadline-left">
+                        <div class="deadline-date">OCT 15</div>
+                        <div class="deadline-name">Extended Individual & C-Corp</div>
+                    </div>
+                    <div class="deadline-status upcoming" id="deadline-oct15">224 days</div>
+                </div>
+            </div>
+
+            <div class="checklist-card reveal reveal-delay-1">
+                <div class="tax-card-title">
+                    <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Document Checklist
+                </div>
+                <div class="checklist-intro">Are you ready to file? Check off what you have gathered.</div>
+
+                <ul class="checklist-items" id="checklist">
+                    <li class="checklist-item" data-item="1">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">W-2s and 1099s (all types)</span>
+                    </li>
+                    <li class="checklist-item" data-item="2">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Prior year tax returns</span>
+                    </li>
+                    <li class="checklist-item" data-item="3">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Business income and expense records</span>
+                    </li>
+                    <li class="checklist-item" data-item="4">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Depreciation schedules and asset lists</span>
+                    </li>
+                    <li class="checklist-item" data-item="5">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Estimated tax payments made</span>
+                    </li>
+                    <li class="checklist-item" data-item="6">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Health insurance documentation (1095s)</span>
+                    </li>
+                    <li class="checklist-item" data-item="7">
+                        <div class="checklist-box"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        <span class="checklist-label">Retirement contributions and distributions</span>
+                    </li>
+                </ul>
+
+                <div class="checklist-progress">
+                    <div class="checklist-bar">
+                        <div class="checklist-fill" id="checklistFill"></div>
+                    </div>
+                    <div class="checklist-percent" id="checklistPercent">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CLIENT EXPERIENCE
+     ============================================ -->
+<section class="section" id="experience">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Client Experience</div>
+            <h2 class="section-title">What Working With Us Looks Like</h2>
+            <p class="section-subtitle">A clear, structured process from your first conversation to year-round support.</p>
+        </div>
+
+        <div class="experience-timeline">
+            <div class="exp-step reveal">
+                <div class="exp-step-number">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div class="exp-step-title">Discovery Call</div>
+                <div class="exp-step-desc">We learn about your business, goals, and current financial setup. No obligation.</div>
+            </div>
+
+            <div class="exp-step reveal reveal-delay-1">
+                <div class="exp-step-number">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <div class="exp-step-title">Onboarding</div>
+                <div class="exp-step-desc">We gather documents, set up your portal, and build your financial picture.</div>
+            </div>
+
+            <div class="exp-step reveal reveal-delay-2">
+                <div class="exp-step-number">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <div class="exp-step-title">Secure Portal</div>
+                <div class="exp-step-desc">Share documents, sign returns, and message your team in one secure place.</div>
+            </div>
+
+            <div class="exp-step reveal reveal-delay-3">
+                <div class="exp-step-number">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="exp-step-title">Year-Round Advisory</div>
+                <div class="exp-step-desc">Proactive check-ins, planning sessions, and real-time answers when you need them.</div>
+            </div>
+
+            <div class="exp-step reveal reveal-delay-4">
+                <div class="exp-step-number">
+                    <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-6"/></svg>
+                </div>
+                <div class="exp-step-title">Annual Review</div>
+                <div class="exp-step-desc">Full-year financial review, next-year strategy, and updated projections every fall.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     TEAM
+     ============================================ -->
+<section class="section section-cream" id="team">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Our Team</div>
+            <h2 class="section-title">People Who Know Your Industry</h2>
+            <p class="section-subtitle">Every team member brings deep expertise in the industries we serve.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card reveal">
+                <div class="team-photo team-photo-1">
+                    <div class="team-photo-inner">SR</div>
+                </div>
+                <div class="team-name">Sarah Ridgeline</div>
+                <div class="team-creds">CPA, CGMA</div>
+                <div class="team-role">Managing Partner</div>
+            </div>
+
+            <div class="team-card reveal reveal-delay-1">
+                <div class="team-photo team-photo-2">
+                    <div class="team-photo-inner">MT</div>
+                </div>
+                <div class="team-name">Michael Torres</div>
+                <div class="team-creds">CPA, MST</div>
+                <div class="team-role">Tax Director</div>
+            </div>
+
+            <div class="team-card reveal reveal-delay-2">
+                <div class="team-photo team-photo-3">
+                    <div class="team-photo-inner">RK</div>
+                </div>
+                <div class="team-name">Rachel Kim</div>
+                <div class="team-creds">CPA</div>
+                <div class="team-role">Healthcare Practice Lead</div>
+            </div>
+
+            <div class="team-card reveal reveal-delay-3">
+                <div class="team-photo team-photo-4">
+                    <div class="team-photo-inner">DO</div>
+                </div>
+                <div class="team-name">David Okonkwo</div>
+                <div class="team-creds">CPA, ABV</div>
+                <div class="team-role">Advisory Director</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     INSIGHTS
+     ============================================ -->
+<section class="section" id="insights">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Insights</div>
+            <h2 class="section-title">Thinking Beyond the Return</h2>
+            <p class="section-subtitle">Perspectives on tax strategy, business growth, and financial decision-making from our team.</p>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card reveal">
+                <div class="insight-img insight-img-1">
+                    <div class="insight-img-text"><span>Tax Strategy</span></div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-tag">Tax Planning</div>
+                    <div class="insight-title">5 Tax Strategies Business Owners Overlook Every Year</div>
+                    <div class="insight-excerpt">Most business owners focus on deductions. The real savings come from entity structure, timing, and retirement plan design.</div>
+                </div>
+            </div>
+
+            <div class="insight-card reveal reveal-delay-1">
+                <div class="insight-img insight-img-2">
+                    <div class="insight-img-text"><span>Industry Update</span></div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-tag">Construction</div>
+                    <div class="insight-title">New ASC 606 Implications for Contractors in 2026</div>
+                    <div class="insight-excerpt">Revenue recognition changes affect how construction firms report long-term contracts. Here is what your financials need to reflect.</div>
+                </div>
+            </div>
+
+            <div class="insight-card reveal reveal-delay-2">
+                <div class="insight-img insight-img-3">
+                    <div class="insight-img-text"><span>Advisory</span></div>
+                </div>
+                <div class="insight-content">
+                    <div class="insight-tag">Growth</div>
+                    <div class="insight-title">When Does a Fractional CFO Make Sense for Your Business?</div>
+                    <div class="insight-excerpt">If you are making decisions based on gut feel instead of financial data, it might be time for a different level of support.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     CTA SECTION
+     ============================================ -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-title reveal">Ready for a Financial Partner Who Thinks Ahead?</div>
+        <div class="cta-text reveal reveal-delay-1">Schedule a no-obligation discovery call. We will listen first, then tell you honestly how we can help.</div>
+        <a href="#contact" class="btn-cta reveal reveal-delay-2">
+            Schedule Your Discovery Call
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+</section>
+
+<!-- ============================================
+     CONTACT
+     ============================================ -->
+<section class="section" id="contact">
+    <div class="container">
+        <div class="section-header reveal">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Start the Conversation</h2>
+            <p class="section-subtitle">Tell us about your business. We will respond within one business day.</p>
+        </div>
+
+        <div class="contact-grid">
+            <div class="reveal">
+                <div class="contact-info-group">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Office</div>
+                            <div class="contact-info-value">7890 Sawmill Road, Suite 200<br>Dublin, OH 43017</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Phone</div>
+                            <div class="contact-info-value">(614) 555-0142</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Email</div>
+                            <div class="contact-info-value">info@ridgelinecpa.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="contact-info-label">Hours</div>
+                            <div class="contact-info-value">Monday - Friday: 8:00am - 5:00pm<br>Extended hours January - April</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-map-placeholder">
+                    <div class="map-pin">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="white"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card reveal reveal-delay-1">
+                <div class="contact-form-title">Send Us a Message</div>
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Business Name</label>
+                        <input type="text" id="business" name="business">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">What Can We Help With?</label>
+                        <select id="service" name="service">
+                            <option value="" disabled selected>Select a service area</option>
+                            <option value="tax-planning">Tax Planning & Preparation</option>
+                            <option value="bookkeeping">Bookkeeping & Payroll</option>
+                            <option value="advisory">Strategic Advisory / CFO Services</option>
+                            <option value="valuation">Business Valuation</option>
+                            <option value="succession">Succession & Exit Planning</option>
+                            <option value="other">Something Else</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (optional)</label>
+                        <textarea id="message" name="message" placeholder="Tell us a bit about your business and what you are looking for."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <p>Thanks for reaching out. We will be in touch within one business day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-mark"></div>
+                    <div>
+                        <div class="logo-text">Ridgeline</div>
+                        <div class="logo-sub">CPA Group</div>
+                    </div>
+                </div>
+                <div class="footer-about">
+                    Proactive tax planning, strategic advisory, and full-service accounting for businesses in Central Ohio. Serving construction, healthcare, professional services, and manufacturing since 2008.
+                </div>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Services</div>
+                <ul class="footer-links">
+                    <li><a href="#services">Business Tax</a></li>
+                    <li><a href="#services">Individual Tax</a></li>
+                    <li><a href="#services">Bookkeeping</a></li>
+                    <li><a href="#services">Strategic Advisory</a></li>
+                    <li><a href="#services">Business Valuation</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Industries</div>
+                <ul class="footer-links">
+                    <li><a href="#industries">Construction</a></li>
+                    <li><a href="#industries">Healthcare</a></li>
+                    <li><a href="#industries">Professional Services</a></li>
+                    <li><a href="#industries">Manufacturing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="footer-col-title">Company</div>
+                <ul class="footer-links">
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#">Client Portal</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copy">&copy; 2026 Ridgeline CPA Group. All rights reserved. This is a demo site.</div>
+            <div class="footer-creds">AICPA Member &middot; Ohio Society of CPAs &middot; QuickBooks ProAdvisor</div>
+        </div>
+    </div>
+</footer>
+
+<!-- ============================================
+     BUILT BY BADGE
+     ============================================ -->
+<a href="https://aiopssystem.com" target="_blank" class="built-by">
+    <div class="built-by-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+    </div>
+    Built by AI Ops System
+</a>
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+(function() {
+    'use strict';
+
+    // ===== STICKY HEADER =====
+    var header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }, { passive: true });
+
+    // ===== MOBILE NAV =====
+    var navToggle = document.getElementById('navToggle');
+    var navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', function() {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            navToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
+
+    // ===== SCROLL REVEAL =====
+    var reveals = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    reveals.forEach(function(el) { observer.observe(el); });
+
+    // ===== COUNTER ANIMATION =====
+    var counters = document.querySelectorAll('[data-count]');
+    var counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var el = entry.target;
+                var target = parseInt(el.getAttribute('data-count'));
+                var suffix = el.getAttribute('data-suffix') || '';
+                var duration = 1500;
+                var start = performance.now();
+
+                function animate(now) {
+                    var elapsed = now - start;
+                    var progress = Math.min(elapsed / duration, 1);
+                    var eased = 1 - Math.pow(1 - progress, 3);
+                    var current = Math.round(eased * target);
+                    el.textContent = current + suffix;
+                    if (progress < 1) requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(function(el) { counterObserver.observe(el); });
+
+    // ===== TAX DEADLINE COUNTDOWN =====
+    var deadlines = [
+        { id: 'deadline-mar15', date: new Date(2026, 2, 15) },
+        { id: 'deadline-apr15', date: new Date(2026, 3, 15) },
+        { id: 'deadline-jun15', date: new Date(2026, 5, 15) },
+        { id: 'deadline-sep15', date: new Date(2026, 8, 15) },
+        { id: 'deadline-oct15', date: new Date(2026, 9, 15) }
+    ];
+
+    function updateDeadlines() {
+        var now = new Date();
+        deadlines.forEach(function(d) {
+            var el = document.getElementById(d.id);
+            if (!el) return;
+            var diff = Math.ceil((d.date - now) / (1000 * 60 * 60 * 24));
+            if (diff < 0) {
+                el.textContent = 'Passed';
+                el.className = 'deadline-status passed';
+            } else if (diff <= 14) {
+                el.textContent = diff + ' days';
+                el.className = 'deadline-status soon';
+            } else {
+                el.textContent = diff + ' days';
+                el.className = 'deadline-status upcoming';
+            }
+        });
+    }
+    updateDeadlines();
+
+    // ===== INTERACTIVE CHECKLIST =====
+    var checklistItems = document.querySelectorAll('.checklist-item');
+    var totalItems = checklistItems.length;
+    var fill = document.getElementById('checklistFill');
+    var percent = document.getElementById('checklistPercent');
+
+    function updateProgress() {
+        var checked = document.querySelectorAll('.checklist-item.checked').length;
+        var pct = Math.round((checked / totalItems) * 100);
+        fill.style.width = pct + '%';
+        percent.textContent = pct + '%';
+    }
+
+    checklistItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            item.classList.toggle('checked');
+            updateProgress();
+        });
+    });
+
+    // ===== SELECT COLOR FIX =====
+    var serviceSelect = document.getElementById('service');
+    if (serviceSelect) {
+        serviceSelect.addEventListener('change', function() {
+            if (this.value) {
+                this.classList.add('has-value');
+            } else {
+                this.classList.remove('has-value');
+            }
+        });
+    }
+
+    // ===== CONTACT FORM =====
+    window.handleSubmit = function(e) {
+        e.preventDefault();
+        var form = document.getElementById('contactForm');
+        var success = document.getElementById('formSuccess');
+        form.style.display = 'none';
+        success.classList.add('show');
+    };
+
+})();
+</script>
+
+</body>
+</html>

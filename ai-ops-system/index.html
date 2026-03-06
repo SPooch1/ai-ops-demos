@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ops System – Custom Websites & Automation for Small Business</title>
+    <meta name="description" content="AI-powered websites and automation packages for small businesses (10-99 employees). Custom builds in 2 weeks. No templates.">
+    <meta property="og:title" content="AI Ops System – Custom Websites & Automation for Small Business">
+    <meta property="og:description" content="AI-powered websites and automation packages for small businesses. Custom builds in 2 weeks. No templates.">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTNHERG4QD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JTNHERG4QD');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --accent-blue: #0EA5E9;
+            --accent-bright: #38bdf8;
+            --accent-amber: #F59E0B;
+            --border-dark: #1f2937;
+            --green-accent: #10b981;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === HEADER / NAV === */
+        header {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .cta-book {
+            background: var(--accent-amber);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-left: 2rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-book:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                position: relative;
+            }
+
+            .nav-toggle {
+                display: flex;
+                order: 1;
+            }
+
+            .logo {
+                order: 0;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                order: 3;
+                padding-top: 1rem;
+            }
+
+            nav.active {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            nav.active a {
+                margin-left: 0;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid var(--border-dark);
+            }
+
+            .cta-book {
+                margin-left: auto;
+                order: 2;
+            }
+        }
+
+        /* === HERO === */
+        .hero {
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+        }
+
+        /* Animated background grid */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: drift 20s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        /* Animated gradient orb */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            background: var(--accent-amber);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #d97706;
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-amber);
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-amber);
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-amber);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* === SECTION SPACING === */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === THE PROBLEM === */
+        #problem {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .problem-card:nth-child(1) { animation-delay: 0.1s; }
+        .problem-card:nth-child(2) { animation-delay: 0.2s; }
+        .problem-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .problem-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .problem-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .problem-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* === WHAT WE BUILD === */
+        #offerings {
+            background: var(--bg-dark);
+        }
+
+        .offerings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .offering-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, #181818 100%);
+            border: 1px solid var(--border-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .offering-card:nth-child(1) { animation-delay: 0.15s; }
+        .offering-card:nth-child(2) { animation-delay: 0.25s; }
+
+        .offering-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-bright));
+        }
+
+        .offering-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .offering-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .offering-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .offering-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .offering-features li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .offering-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--green-accent);
+            font-weight: bold;
+        }
+
+        /* === PORTFOLIO === */
+        #portfolio {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+        }
+
+        .portfolio-note {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 3px solid var(--accent-blue);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .demo-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .demo-card:nth-child(1) { animation-delay: 0.1s; }
+        .demo-card:nth-child(2) { animation-delay: 0.2s; }
+        .demo-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .demo-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 25px 50px rgba(59, 130, 246, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .browser-window {
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .browser-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .browser-dot:nth-child(1) { background: #ff5f56; }
+        .browser-dot:nth-child(2) { background: #ffbd2e; }
+        .browser-dot:nth-child(3) { background: #27c93f; }
+
+        .browser-url {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-dark);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-family: 'Courier New', monospace;
+        }
+
+        .demo-preview {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .demo-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .demo-industry {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn-demo {
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .btn-demo:hover {
+            background: var(--accent-bright);
+            transform: translateX(4px);
+        }
+
+        /* === AUTOMATION PACKAGES === */
+        #automation {
+            background: var(--bg-dark);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            padding: 1.8rem;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        .package-card:nth-child(1) { animation-delay: 0.05s; }
+        .package-card:nth-child(2) { animation-delay: 0.1s; }
+        .package-card:nth-child(3) { animation-delay: 0.15s; }
+        .package-card:nth-child(4) { animation-delay: 0.2s; }
+        .package-card:nth-child(5) { animation-delay: 0.25s; }
+
+        .package-card:hover {
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+            transform: translateY(-6px);
+        }
+
+        .package-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .package-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.75rem;
+        }
+
+        .package-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .maintenance-note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-dark);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* === HOW IT WORKS === */
+        #how-it-works {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid::before {
+                content: '';
+                position: absolute;
+                top: 60px;
+                left: 10%;
+                right: 10%;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+                z-index: 0;
+            }
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+            text-align: center;
+        }
+
+        .step:nth-child(1) { animation-delay: 0.1s; }
+        .step:nth-child(2) { animation-delay: 0.2s; }
+        .step:nth-child(3) { animation-delay: 0.3s; }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .step h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* === ABOUT === */
+        #about {
+            background: var(--bg-dark);
+        }
+
+        .about-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            padding: 3rem;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        .about-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* === CONTACT === */
+        #contact {
+            background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        }
+
+        .contact-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            padding: 2.5rem;
+            border-radius: 12px;
+            opacity: 0;
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-dark);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.05);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent-amber);
+            color: white;
+            padding: 1rem;
+            border-radius: 6px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border-dark);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .built-with-ai {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-dark);
+        }
+
+        /* === SCROLL ANIMATIONS === */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 640px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .offerings-grid,
+            .problem-grid,
+            .portfolio-grid,
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-container {
+                padding: 1.5rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-content">
+        <div class="logo">AI Ops</div>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="nav-links">
+            <a href="#offerings">What We Build</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#automation">Automation</a>
+            <a href="#how-it-works">How It Works</a>
+        </nav>
+        <button class="cta-book" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">
+            Book a Call
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your Business Deserves Better Than a <span class="highlight">Template</span></h1>
+        <p>Custom AI-powered websites that convert. Smart automation so you can focus on growing your business. No cookie-cutter solutions—built specifically for small businesses like yours.</p>
+        
+        <div class="hero-ctas">
+            <a href="#portfolio" class="btn-primary">See Our Work</a>
+            <button class="btn-secondary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Book a Call</button>
+        </div>
+    </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section id="problem">
+    <h2 class="section-title">The Problem</h2>
+    <p class="section-subtitle">Most small businesses are stuck with outdated websites and manual processes that kill productivity.</p>
+    
+    <div class="problem-grid">
+        <div class="problem-card scroll-fade">
+            <h3>Your Website Doesn't Convert</h3>
+            <p>Template websites look like everyone else's. Your prospects visit and leave within seconds. You're losing deals to competitors who look more professional.</p>
+        </div>
+        <div class="problem-card scroll-fade">
+            <h3>Manual Processes Drain Time</h3>
+            <p>Your team spends hours on repetitive tasks—scheduling, follow-ups, data entry, reporting. That's time you can't spend growing the business or serving clients.</p>
+        </div>
+        <div class="problem-card scroll-fade">
+            <h3>You're Not Competing Effectively</h3>
+            <p>Competitors with modern digital presence are capturing your market share. You need a website and systems that make you look and operate like a professional outfit.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section id="offerings">
+    <h2 class="section-title">What We Build</h2>
+    <p class="section-subtitle">Two core solutions designed to transform how your business looks and operates.</p>
+    
+    <div class="offerings-grid">
+        <div class="offering-card scroll-fade">
+            <h3>Custom Websites</h3>
+            <div class="offering-price">$3,000–$5,000</div>
+            <ul class="offering-features">
+                <li>Fully custom design (no templates)</li>
+                <li>Mobile-first & optimized to convert</li>
+                <li>2-week delivery</li>
+                <li>SEO ready</li>
+                <li>Built for real prospects</li>
+            </ul>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Your website is your 24/7 salesperson. We build it to work.</p>
+        </div>
+
+        <div class="offering-card scroll-fade">
+            <h3>Automation Packages</h3>
+            <div class="offering-price">$1,497–$2,497</div>
+            <ul class="offering-features">
+                <li>Designed to eliminate repetitive work</li>
+                <li>Zero technical knowledge needed</li>
+                <li>AI-powered workflows</li>
+                <li>Setup + 30-day support included</li>
+                <li>Monthly maintenance optional</li>
+            </ul>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">Reclaim your time. Stop doing the same task twice.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PORTFOLIO (DEMOS) -->
+<section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <p class="section-subtitle">Demo builds showcasing what we create for small businesses.</p>
+    
+    <div class="portfolio-note">
+        <strong>Note:</strong> These are demo sites built for different industries. Your custom site will be tailored entirely to your business.
+    </div>
+
+    <div class="portfolio-grid">
+        <!-- Manufacturing -->
+        <div class="demo-card scroll-fade">
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                </div>
+                <div class="browser-url">forgeandflow.demo.local</div>
+            </div>
+            <div class="demo-preview">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="position: absolute;">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.15);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(16,185,129,0.15);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" fill="url(#grad1)"/>
+                    <text x="50" y="40" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="Arial">Manufacturing</text>
+                    <text x="50" y="55" text-anchor="middle" fill="rgba(59,130,246,0.5)" font-size="6" font-family="Arial">Industrial Solutions</text>
+                </svg>
+            </div>
+            <div class="demo-info">
+                <div class="demo-industry">Manufacturing</div>
+                <div class="demo-name">Forge & Flow</div>
+                <div class="demo-description">Industrial equipment supplier with product showcase and quote request system.</div>
+                <a href="../manufacturing/index.html" class="btn-demo">View Demo</a>
+            </div>
+        </div>
+
+        <!-- Dental -->
+        <div class="demo-card scroll-fade">
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                </div>
+                <div class="browser-url">brightlinedental.demo.local</div>
+            </div>
+            <div class="demo-preview">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="position: absolute;">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.15);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(236,72,153,0.15);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" fill="url(#grad2)"/>
+                    <text x="50" y="40" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="Arial">Dental Practice</text>
+                    <text x="50" y="55" text-anchor="middle" fill="rgba(59,130,246,0.5)" font-size="6" font-family="Arial">Patient Portal</text>
+                </svg>
+            </div>
+            <div class="demo-info">
+                <div class="demo-industry">Healthcare</div>
+                <div class="demo-name">Bright Line Dental</div>
+                <div class="demo-description">Modern dental practice site with appointment booking, patient education, and trust-building design.</div>
+                <a href="../dental/index.html" class="btn-demo">View Demo</a>
+            </div>
+        </div>
+
+        <!-- Professional Services -->
+        <div class="demo-card scroll-fade">
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                </div>
+                <div class="browser-url">callowaypark.demo.local</div>
+            </div>
+            <div class="demo-preview">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="position: absolute;">
+                    <defs>
+                        <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(59,130,246,0.15);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(251,146,60,0.15);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" fill="url(#grad3)"/>
+                    <text x="50" y="40" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="Arial">Consulting</text>
+                    <text x="50" y="55" text-anchor="middle" fill="rgba(59,130,246,0.5)" font-size="6" font-family="Arial">Case Studies</text>
+                </svg>
+            </div>
+            <div class="demo-info">
+                <div class="demo-industry">Professional Services</div>
+                <div class="demo-name">Calloway & Park</div>
+                <div class="demo-description">Consulting firm showcasing expertise with case studies, team bios, and lead generation conversion funnel.</div>
+                <a href="../professional-services/index.html" class="btn-demo">View Demo</a>
+            </div>
+        </div>
+
+        <!-- CPA / Accounting -->
+        <div class="demo-card scroll-fade">
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                    <div class="browser-dot"></div>
+                </div>
+                <div class="browser-url">ridgelinecpa.demo.local</div>
+            </div>
+            <div class="demo-preview">
+                <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" style="position: absolute;">
+                    <defs>
+                        <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:rgba(26,58,42,0.25);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:rgba(184,146,42,0.2);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="100" height="100" fill="url(#grad4)"/>
+                    <text x="50" y="40" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" font-family="Arial">CPA Firm</text>
+                    <text x="50" y="55" text-anchor="middle" fill="rgba(26,58,42,0.5)" font-size="6" font-family="Arial">Tax &amp; Advisory</text>
+                </svg>
+            </div>
+            <div class="demo-info">
+                <div class="demo-industry">Accounting</div>
+                <div class="demo-name">Ridgeline CPA Group</div>
+                <div class="demo-description">Full-service CPA firm with tax deadline center, interactive checklist, industry specializations, and client portal integration.</div>
+                <a href="../cpa/index.html" class="btn-demo">View Demo</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AUTOMATION PACKAGES -->
+<section id="automation">
+    <h2 class="section-title">Automation Packages</h2>
+    <p class="section-subtitle">Pick one or combine multiple packages. Monthly maintenance: $147–$247/mo (optional).</p>
+
+    <div class="packages-grid">
+        <div class="package-card scroll-fade">
+            <div class="package-name">New Client Onboarding</div>
+            <div class="package-price">$1,997</div>
+            <p class="package-description">Automatically welcome new clients, send onboarding docs, and schedule kickoff calls.</p>
+            <div class="maintenance-note">Streamlines your first impression</div>
+        </div>
+
+        <div class="package-card scroll-fade">
+            <div class="package-name">Review & Testimonial Collection</div>
+            <div class="package-price">$1,497</div>
+            <p class="package-description">Collect 5-star reviews and video testimonials from happy clients on autopilot.</p>
+            <div class="maintenance-note">Builds social proof hands-free</div>
+        </div>
+
+        <div class="package-card scroll-fade">
+            <div class="package-name">Appointment Scheduling & Reminders</div>
+            <div class="package-price">$1,497</div>
+            <p class="package-description">Let clients book appointments, auto-send reminders, reduce no-shows with automated reminders.</p>
+            <div class="maintenance-note">Fewer missed appointments</div>
+        </div>
+
+        <div class="package-card scroll-fade">
+            <div class="package-name">Monthly Report Generator</div>
+            <div class="package-price">$2,497</div>
+            <p class="package-description">Automatically compile data, create visual reports, and send to clients monthly.</p>
+            <div class="maintenance-note">Reports without the busywork</div>
+        </div>
+
+        <div class="package-card scroll-fade">
+            <div class="package-name">Lead Follow-Up System</div>
+            <div class="package-price">$1,997</div>
+            <p class="package-description">Auto-follow up with prospects via email sequence. Warm leads before your team even touches them.</p>
+            <div class="maintenance-note">No leads fall through the cracks</div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+    <h2 class="section-title">How It Works</h2>
+    <p class="section-subtitle">From consultation to launch in 3 simple steps.</p>
+
+    <div class="steps-grid">
+        <div class="step scroll-fade">
+            <div class="step-number">1</div>
+            <h3>Book a Call</h3>
+            <p>Tell us about your business, your goals, and what's not working. We'll scope the project and pricing.</p>
+        </div>
+
+        <div class="step scroll-fade">
+            <div class="step-number">2</div>
+            <h3>We Build It</h3>
+            <p>You get regular updates. Most sites are ready in 2 weeks. Automation packages are installed and tested before handoff.</p>
+        </div>
+
+        <div class="step scroll-fade">
+            <div class="step-number">3</div>
+            <h3>You Grow</h3>
+            <p>Your new website and automations start working for you immediately. We're here for questions and minor tweaks.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h2 class="section-title">About AI Ops System</h2>
+
+    <div class="about-content scroll-fade">
+        <h3>Built for Real Businesses</h3>
+        <p>
+            AI Ops System was created to solve a real problem: small businesses don't have access to professional digital infrastructure without paying enterprise prices. Scott built this to bridge that gap.
+        </p>
+        <p>
+            We use AI tools every single day—not to replace human creativity or judgment, but to work faster and smarter. We apply the same tools to your website and automations, giving you capabilities that used to cost thousands more.
+        </p>
+        <p>
+            No fabricated case studies. No fake testimonials. No inflated statistics. Just honest work for businesses that are ready to level up online.
+        </p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2 class="section-title">Ready to Build?</h2>
+    <p class="section-subtitle">Tell us about your business. We'll respond within 24 hours.</p>
+    <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem; font-size: 0.95rem;">
+        <a href="mailto:scott@aiopssystem.com" style="color: var(--accent-blue); text-decoration: none;">scott@aiopssystem.com</a> &nbsp;|&nbsp; <a href="tel:6144346670" style="color: var(--accent-blue); text-decoration: none;">(614) 434-6670</a>
+    </p>
+
+    <div class="contact-container scroll-fade">
+        <form onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Business Name</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+
+            <div class="form-group">
+                <label for="need">What do you need?</label>
+                <select id="need" name="need" required>
+                    <option value="">Select one...</option>
+                    <option value="website">Custom Website</option>
+                    <option value="automation">Automation Package</option>
+                    <option value="both">Both Website + Automation</option>
+                    <option value="other">Something Else</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Tell us a bit more (optional)</label>
+                <textarea id="message" name="message" placeholder="What are your biggest challenges right now?"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <p class="footer-text">
+            &copy; 2026 AI Ops System. All rights reserved.
+        </p>
+        <div class="built-with-ai">
+            <span>⚡</span>
+            <span>Built with AI Tools</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Scroll animations using Intersection Observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe all scroll-fade elements
+    document.querySelectorAll('.scroll-fade').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Form handling
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const company = document.getElementById('company').value;
+        const need = document.getElementById('need').value;
+        const message = document.getElementById('message').value;
+
+        // For production, send to your backend/email service
+        // For now, show a success message
+        const form = event.target;
+        const originalButton = form.querySelector('.btn-submit');
+        const originalText = originalButton.textContent;
+
+        originalButton.textContent = "Thanks! We'll be in touch within 24 hours.";
+        originalButton.style.background = 'var(--green-accent)';
+
+        // Log the submission (in production, send to backend)
+        console.log({
+            name,
+            email,
+            company,
+            need,
+            message,
+            submittedAt: new Date().toISOString()
+        });
+
+        // Reset form
+        setTimeout(() => {
+            form.reset();
+            originalButton.textContent = 'Send Message';
+            originalButton.style.background = 'var(--accent-amber)';
+        }, 4000);
+    }
+
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('nav');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+        });
+        // Close nav when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href !== '#' && document.querySelector(href)) {
+                e.preventDefault();
+                document.querySelector(href).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
