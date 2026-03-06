@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ops System - Build Playbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+            --bg-card: #111111;
+            --bg-input: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --accent-blue: #0EA5E9;
+            --accent-bright: #38bdf8;
+            --accent-amber: #F59E0B;
+            --accent-amber-hover: #d97706;
+            --border-dark: #1f2937;
+            --border-input: #374151;
+            --green-accent: #10b981;
+            --red-accent: #ef4444;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === HEADER === */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-badge {
+            font-size: 0.75rem;
+            color: var(--accent-amber);
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* === MAIN === */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .intro {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .intro h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* === ACCORDION SECTIONS === */
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: #2d3748;
+        }
+
+        .section-header {
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .section-header:hover {
+            background: rgba(14, 165, 233, 0.04);
+        }
+
+        .section-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-chevron {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .section.open .section-chevron {
+            transform: rotate(180deg);
+        }
+
+        .section-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .section.open .section-body {
+            max-height: none;
+        }
+
+        .section-content {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        /* === CONTENT STYLES === */
+        .section-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-bright);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .section-content h3:first-child {
+            margin-top: 1.25rem;
+        }
+
+        .section-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-content ol,
+        .section-content ul {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin: 0.75rem 0 1rem 1.25rem;
+        }
+
+        .section-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-content li strong {
+            color: var(--text-primary);
+        }
+
+        .section-content code {
+            background: var(--bg-input);
+            color: var(--accent-bright);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        .section-content blockquote {
+            background: var(--bg-input);
+            border-left: 3px solid var(--accent-blue);
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .callout {
+            background: rgba(14, 165, 233, 0.06);
+            border: 1px solid rgba(14, 165, 233, 0.15);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .callout strong {
+            color: var(--accent-blue);
+        }
+
+        .callout-amber {
+            background: rgba(245, 158, 11, 0.06);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+        }
+
+        .callout-amber strong {
+            color: var(--accent-amber);
+        }
+
+        .time-estimate {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: var(--green-accent);
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* === TABLES === */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-dark);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background: var(--bg-input);
+            color: var(--text-primary);
+            font-weight: 600;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-dark);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.65rem 1rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(31, 41, 55, 0.5);
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: rgba(14, 165, 233, 0.03);
+        }
+
+        /* === TEMPLATE LIST === */
+        .template-list {
+            list-style: none;
+            margin-left: 0 !important;
+            padding: 0;
+        }
+
+        .template-list li {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            padding: 0.4rem 0;
+        }
+
+        .template-list li .arrow {
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        /* === CHECKLIST (Section 8) === */
+        .checklist {
+            list-style: none;
+            margin-left: 0 !important;
+            padding: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(31, 41, 55, 0.3);
+        }
+
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+
+        .checklist input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-input);
+            border-radius: 4px;
+            background: var(--bg-input);
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .checklist input[type="checkbox"]:checked {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+        }
+
+        .checklist input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checklist label {
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .checklist input[type="checkbox"]:checked + label {
+            color: var(--text-muted);
+            text-decoration: line-through;
+        }
+
+        /* === FOOTER === */
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-dark);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* === PRINT STYLES === */
+        @media print {
+            body {
+                background: white;
+                color: #111;
+            }
+
+            header {
+                position: static;
+                background: white;
+                border-bottom: 2px solid #ddd;
+            }
+
+            .logo {
+                background: none;
+                -webkit-text-fill-color: #0EA5E9;
+                color: #0EA5E9;
+            }
+
+            .header-badge {
+                border: 1px solid #F59E0B;
+                color: #d97706;
+                background: none;
+            }
+
+            .section {
+                background: white;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+            }
+
+            .section-body {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .section-content {
+                border-top: 1px solid #ddd;
+            }
+
+            .section-chevron { display: none; }
+
+            .section-content h3 { color: #0EA5E9; }
+            .section-content p,
+            .section-content li,
+            .section-content td,
+            .checklist label { color: #333; }
+
+            th { background: #f5f5f5; color: #111; }
+            td { border-bottom-color: #eee; }
+
+            .intro {
+                background: white;
+                border: 1px solid #ddd;
+            }
+
+            .intro h1 {
+                background: none;
+                -webkit-text-fill-color: #0EA5E9;
+                color: #0EA5E9;
+            }
+
+            .intro p { color: #333; }
+
+            blockquote {
+                background: #f9f9f9;
+                border-left-color: #0EA5E9;
+                color: #333;
+            }
+
+            .callout, .callout-amber {
+                background: #f9f9f9;
+                border-color: #ddd;
+                color: #333;
+            }
+
+            code {
+                background: #f0f0f0;
+                color: #0EA5E9;
+            }
+
+            footer { color: #999; border-top-color: #ddd; }
+        }
+
+        /* === MOBILE === */
+        @media (max-width: 640px) {
+            .header-content { padding: 1rem; }
+            .logo { font-size: 1.25rem; }
+            main { padding: 1rem; }
+            .intro { padding: 1.5rem; }
+            .section-header { padding: 1rem 1.25rem; }
+            .section-content { padding: 0 1.25rem 1.25rem; }
+            .section-title { font-size: 1rem; }
+            table { font-size: 0.8rem; }
+            th, td { padding: 0.5rem 0.65rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">AI Ops System</div>
+        <div class="header-badge">Internal Playbook</div>
+    </div>
+</header>
+
+<main>
+    <div class="intro">
+        <h1>Build Playbook</h1>
+        <p>Step-by-step instructions for building each client deliverable. Open any section below for the full walkthrough.</p>
+    </div>
+
+    <!-- ==================== SECTION 1 ==================== -->
+    <div class="section" id="section-1">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">1</div>
+                <div class="section-title">Pre-Build Setup (Do This for Every Client)</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <h3>Before you start building anything:</h3>
+                <ol>
+                    <li><strong>Create a client folder:</strong> <code>ai-ops-demos/sites/[client-name]/</code></li>
+                    <li><strong>Collect all assets</strong> from the client onboarding checklist (<a href="onboarding.html" style="color: var(--accent-blue);">open onboarding.html</a>)</li>
+                    <li><strong>Save client's logo, headshot(s), and brand colors</strong> to the client folder</li>
+                    <li><strong>Create a <code>notes.txt</code></strong> in the client folder with:
+                        <ul>
+                            <li>Business name</li>
+                            <li>Industry</li>
+                            <li>Packages purchased</li>
+                            <li>Key preferences</li>
+                            <li>Deadline</li>
+                        </ul>
+                    </li>
+                    <li><strong>If the client purchased a website, start there.</strong> The automations reference the website, so build it first.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 2 ==================== -->
+    <div class="section" id="section-2">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">2</div>
+                <div class="section-title">Custom Website Build</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> A single-file HTML website (like the demo sites in the portfolio).</p>
+
+                <h3>Step 1: Pick a starting template</h3>
+                <p>Open the demo site closest to the client's industry:</p>
+                <ul class="template-list">
+                    <li><span class="arrow">&#8594;</span> CPA / Accounting: <code>sites/cpa/index.html</code></li>
+                    <li><span class="arrow">&#8594;</span> Dental / Medical: <code>sites/dental/index.html</code></li>
+                    <li><span class="arrow">&#8594;</span> Law Firm / Professional Services: <code>sites/professional-services/index.html</code></li>
+                    <li><span class="arrow">&#8594;</span> Manufacturing / Industrial: <code>sites/manufacturing/index.html</code></li>
+                    <li><span class="arrow">&#8594;</span> General / Other: <code>sites/cpa/index.html</code> (best overall template)</li>
+                </ul>
+
+                <h3>Step 2: Open Claude Code and tell it:</h3>
+                <blockquote>"I need to build a custom website for [Business Name]. They're a [industry] firm with [X] employees. Here's their info: [paste from onboarding checklist]. Use [template file] as the starting point. Brand colors: [X, Y, Z]. Fonts: [X, Y]."</blockquote>
+
+                <h3>Step 3: Claude Code will:</h3>
+                <ul>
+                    <li>Copy the template to the client folder</li>
+                    <li>Replace all placeholder content (business name, team members, services, etc.)</li>
+                    <li>Update colors, fonts, and styling to match the client's brand</li>
+                    <li>Update contact info, CTAs, and links</li>
+                    <li>Add/remove sections based on what the client needs</li>
+                </ul>
+
+                <h3>Step 4: Review the site</h3>
+                <p>Open <code>index.html</code> in your browser (just double-click the file):</p>
+                <ul>
+                    <li>Check all text for accuracy</li>
+                    <li>Verify colors look right</li>
+                    <li>Test on mobile (use browser dev tools or shrink the window)</li>
+                    <li>Click all links and buttons</li>
+                </ul>
+
+                <h3>Step 5: Client review</h3>
+                <p>Email the HTML file to the client, or host it temporarily on GitHub Pages for preview. Get feedback, make revisions.</p>
+
+                <h3>Step 6: Deploy to client's hosting</h3>
+                <ul>
+                    <li><strong>SiteGround:</strong> Upload via File Manager or FTP</li>
+                    <li><strong>Other host:</strong> Follow their upload process</li>
+                    <li><strong>No hosting:</strong> Recommend SiteGround ($3.99/mo starter plan)</li>
+                    <li>Point their domain's DNS to the hosting</li>
+                    <li>SSL certificate (most hosts do this automatically)</li>
+                </ul>
+
+                <div class="time-estimate">Estimated build time: 2-4 hours with Claude Code</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 3 ==================== -->
+    <div class="section" id="section-3">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">3</div>
+                <div class="section-title">New Client Onboarding Automation</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> An automated email sequence that triggers when a new client signs up. Built in MailerLite.</p>
+
+                <h3>What you need from the client:</h3>
+                <ul>
+                    <li>Welcome message content (or permission to write it)</li>
+                    <li>List of onboarding steps/documents the client needs</li>
+                    <li>Timeline (how spread out the emails should be)</li>
+                    <li>Sender name and email address</li>
+                </ul>
+
+                <h3>Step 1: Log into MailerLite</h3>
+                <p>Use the scott@buildmoremargin.com account, or the client's own account.</p>
+
+                <h3>Step 2: Create a new Group</h3>
+                <p>Name it <code>[Client Name] - New Clients</code></p>
+                <p>Path: Subscribers &gt; Groups &gt; Create Group</p>
+
+                <h3>Step 3: Create a new Automation</h3>
+                <p>Automations &gt; Create automation &gt; Start from scratch</p>
+                <p>Trigger: "When a subscriber joins a group" &gt; select the group you just created</p>
+                <p>Add email steps with delays between them:</p>
+
+                <div class="callout">
+                    <strong>Typical 5-email onboarding sequence:</strong>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Email</th><th>Delay</th><th>Subject</th><th>Content</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Immediate</td><td>Welcome to [Business]!</td><td>Warm welcome, what to expect, first steps</td></tr>
+                            <tr><td>2</td><td>Day 2</td><td>Your next step: [Action]</td><td>First document/form to complete</td></tr>
+                            <tr><td>3</td><td>Day 5</td><td>Quick check-in</td><td>Are they on track? Need help?</td></tr>
+                            <tr><td>4</td><td>Day 10</td><td>[Helpful resource]</td><td>Tips, guide, or FAQ relevant to new clients</td></tr>
+                            <tr><td>5</td><td>Day 14</td><td>You're all set!</td><td>Confirm onboarding complete, introduce ongoing support</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Step 4: Write each email</h3>
+                <p>Use MailerLite's drag-and-drop editor:</p>
+                <ul>
+                    <li>Add the client's logo at the top</li>
+                    <li>Use their brand colors for buttons</li>
+                    <li>Keep emails short (3-5 paragraphs max)</li>
+                    <li>Every email needs a clear CTA button</li>
+                    <li>Use <code>{$name}</code> for personalization (MailerLite's merge tag)</li>
+                </ul>
+
+                <h3>Step 5: Create an opt-in form (if needed)</h3>
+                <p>Forms &gt; Create form &gt; Embedded form</p>
+                <ul>
+                    <li>Style it to match the client's brand</li>
+                    <li>Connect it to the "[Client Name] - New Clients" group</li>
+                    <li>Get the embed code and add it to the client's website</li>
+                </ul>
+
+                <h3>Step 6: Test the automation</h3>
+                <ul>
+                    <li>Add yourself as a subscriber to the group</li>
+                    <li>Verify each email arrives with correct content and timing</li>
+                    <li>Check links, images, and formatting</li>
+                    <li>Delete yourself from the group when done testing</li>
+                </ul>
+
+                <h3>Step 7: Activate</h3>
+                <p>Activate the automation and show the client how to add new subscribers (or connect their form).</p>
+
+                <div class="time-estimate">Estimated build time: 2-3 hours</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 4 ==================== -->
+    <div class="section" id="section-4">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">4</div>
+                <div class="section-title">Review Collection Automation</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> An automated sequence that asks happy clients to leave online reviews. Built in MailerLite.</p>
+
+                <h3>What you need from the client:</h3>
+                <ul>
+                    <li>Which review platforms (Google, Yelp, Facebook, etc.)</li>
+                    <li>Direct review links for each platform</li>
+                    <li>Timing preference (how long after service)</li>
+                    <li>Whether they want a "happy gate" (satisfaction check first)</li>
+                </ul>
+
+                <h3>Step 1: Create a Group</h3>
+                <p>Name it <code>[Client Name] - Review Requests</code></p>
+
+                <h3>Step 2: Create the Automation</h3>
+
+                <div class="callout">
+                    <strong>Without happy gate (simpler):</strong>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Email</th><th>Delay</th><th>Subject</th><th>Content</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Immediate</td><td>How did we do?</td><td>"We'd love your feedback. It takes 2 minutes." + direct review link button</td></tr>
+                            <tr><td>2</td><td>Day 3</td><td>Quick reminder</td><td>Gentle nudge for those who didn't review</td></tr>
+                            <tr><td>3</td><td>Day 7</td><td>Last chance</td><td>Final ask, emphasize how much it helps</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout">
+                    <strong>With happy gate (recommended):</strong>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Email</th><th>Delay</th><th>Subject</th><th>Content</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Immediate</td><td>How was your experience?</td><td>Two buttons: "It was great!" / "Could be better"</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul>
+                    <li><strong>"It was great!"</strong> button links to the review platform</li>
+                    <li><strong>"Could be better"</strong> button links to a private feedback form (Google Form or email)</li>
+                    <li>This way, unhappy clients give feedback privately instead of leaving bad public reviews</li>
+                </ul>
+
+                <h3>Step 3: Get the client's direct review links</h3>
+                <ul>
+                    <li><strong>Google:</strong> Search for the business on Google Maps &gt; click "Write a review" &gt; copy that URL</li>
+                    <li>Or use a Google Place ID link: <code>https://search.google.com/local/writereview?placeid=[PLACE_ID]</code></li>
+                    <li><strong>Yelp:</strong> <code>https://www.yelp.com/writeareview/biz/[BUSINESS_ID]</code></li>
+                </ul>
+
+                <h3>Step 4: Test, activate, and train the client</h3>
+                <p>Show the client when to add contacts to the group (e.g., after each completed service).</p>
+
+                <div class="time-estimate">Estimated build time: 1-2 hours</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 5 ==================== -->
+    <div class="section" id="section-5">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">5</div>
+                <div class="section-title">Scheduling & Reminders Automation</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> Automated appointment reminders and follow-ups. Can be built in MailerLite or integrated with their scheduling tool.</p>
+
+                <h3>What you need from the client:</h3>
+                <ul>
+                    <li>Current scheduling tool (if any)</li>
+                    <li>Appointment types</li>
+                    <li>Reminder timing preferences</li>
+                    <li>Whether they want SMS (requires additional tool like Twilio)</li>
+                </ul>
+
+                <h3>Option A: Email-only reminders (MailerLite)</h3>
+                <div class="callout"><strong>Best for most clients. Start here.</strong></div>
+                <ol>
+                    <li>Create a Group <code>[Client Name] - Appointments</code></li>
+                    <li>Build automation with reminder emails at chosen intervals</li>
+                    <li>Client manually adds contacts when appointments are booked (or connect via Zapier/n8n if they use Calendly/Acuity)</li>
+                    <li>Post-appointment follow-up email (thank you + review request or next steps)</li>
+                </ol>
+
+                <h3>Option B: Connected to scheduling tool (n8n workflow)</h3>
+                <ol>
+                    <li>This requires n8n (more advanced)</li>
+                    <li>Webhook trigger from Calendly/Acuity &gt; n8n &gt; MailerLite group</li>
+                    <li>Only pursue this if client specifically needs it. Otherwise Option A works fine.</li>
+                </ol>
+
+                <h3>Option C: SMS reminders (requires Twilio)</h3>
+                <ol>
+                    <li>Adds complexity and recurring cost ($0.0079/SMS)</li>
+                    <li>Only offer if client specifically requests SMS</li>
+                    <li>Uses n8n: scheduling tool &gt; n8n &gt; Twilio SMS</li>
+                </ol>
+
+                <div class="callout-amber callout">
+                    <strong>For most clients, Option A is the right starting point.</strong> Keep it simple.
+                </div>
+
+                <div class="time-estimate">Estimated build time: 1-2 hrs (Option A) | 3-4 hrs (Option B/C)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 6 ==================== -->
+    <div class="section" id="section-6">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">6</div>
+                <div class="section-title">Report Generator Automation</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> Automated reports compiled from client data. This varies the most by client.</p>
+
+                <h3>Common approaches:</h3>
+                <ul>
+                    <li><strong>Simple:</strong> MailerLite email with formatted data summary (manual data entry)</li>
+                    <li><strong>Medium:</strong> n8n workflow that pulls from Google Sheets/Airtable and formats into email</li>
+                    <li><strong>Advanced:</strong> n8n workflow that pulls from multiple sources, generates PDF, and emails it</li>
+                </ul>
+
+                <h3>Simple version (MailerLite)</h3>
+                <ol>
+                    <li>Create a report template email in MailerLite</li>
+                    <li>Set up a recurring automation (weekly/monthly trigger)</li>
+                    <li>Client updates a shared Google Sheet with their data</li>
+                    <li>Report email summarizes the key metrics</li>
+                </ol>
+
+                <h3>Medium version (n8n)</h3>
+                <ol>
+                    <li>Create an n8n workflow</li>
+                    <li>Schedule trigger (weekly/monthly)</li>
+                    <li>Google Sheets node to pull data</li>
+                    <li>Code node to format the report</li>
+                    <li>Email node (or MailerLite node) to send</li>
+                </ol>
+
+                <div class="callout-amber callout">
+                    <strong>This is the most custom package.</strong> Scope it carefully during discovery.
+                </div>
+
+                <div class="time-estimate">Estimated build time: 2-6 hours depending on complexity</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 7 ==================== -->
+    <div class="section" id="section-7">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">7</div>
+                <div class="section-title">Lead Follow-Up Automation</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <p><strong>What you're building:</strong> Automated email sequence for new leads. Built in MailerLite.</p>
+
+                <h3>What you need from the client:</h3>
+                <ul>
+                    <li>Where leads come from</li>
+                    <li>Current follow-up process</li>
+                    <li>Desired tone and messaging</li>
+                </ul>
+
+                <h3>Step 1: Create a Group</h3>
+                <p>Name it <code>[Client Name] - New Leads</code></p>
+
+                <h3>Step 2: Create an embedded form (if needed)</h3>
+                <p>For the client's website:</p>
+                <ul>
+                    <li>Name, email, phone (optional), "How can we help?" dropdown or textarea</li>
+                    <li>Connect form to the group</li>
+                </ul>
+
+                <h3>Step 3: Build the automation</h3>
+
+                <div class="callout">
+                    <strong>Typical 5-email lead nurture:</strong>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Email</th><th>Delay</th><th>Subject</th><th>Content</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Immediate</td><td>Thanks for reaching out!</td><td>Acknowledge inquiry, set expectations, offer quick-win resource</td></tr>
+                            <tr><td>2</td><td>Day 2</td><td>[Helpful content]</td><td>Educational content related to their need (positions client as expert)</td></tr>
+                            <tr><td>3</td><td>Day 5</td><td>Quick question</td><td>"Are you still looking for help with [X]?" - re-engage</td></tr>
+                            <tr><td>4</td><td>Day 8</td><td>What our clients say</td><td>Social proof / case study, or "here's how we typically help"</td></tr>
+                            <tr><td>5</td><td>Day 14</td><td>Last check-in</td><td>"If the timing isn't right, no worries. We're here when you need us."</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Step 4: Connect lead sources</h3>
+                <ul>
+                    <li><strong>Website form:</strong> MailerLite group via embed code</li>
+                    <li><strong>Other sources:</strong> Show client how to manually add, or use Zapier/n8n</li>
+                </ul>
+
+                <h3>Step 5: Test and activate</h3>
+
+                <div class="time-estimate">Estimated build time: 2-3 hours</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 8 ==================== -->
+    <div class="section" id="section-8">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">8</div>
+                <div class="section-title">Delivery & Handoff Checklist</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <h3>After everything is built:</h3>
+                <ul class="checklist" id="handoff-checklist">
+                    <li><input type="checkbox" id="chk-1"><label for="chk-1">All website content reviewed and approved by client</label></li>
+                    <li><input type="checkbox" id="chk-2"><label for="chk-2">Website deployed to client's hosting and live</label></li>
+                    <li><input type="checkbox" id="chk-3"><label for="chk-3">SSL certificate active (https://)</label></li>
+                    <li><input type="checkbox" id="chk-4"><label for="chk-4">All automation emails reviewed and approved by client</label></li>
+                    <li><input type="checkbox" id="chk-5"><label for="chk-5">All automations tested end-to-end (subscribe yourself, verify every email)</label></li>
+                    <li><input type="checkbox" id="chk-6"><label for="chk-6">Client trained on how to add subscribers to each group</label></li>
+                    <li><input type="checkbox" id="chk-7"><label for="chk-7">Client given login access to MailerLite (if using Scott's account, create a sub-user)</label></li>
+                    <li><input type="checkbox" id="chk-8"><label for="chk-8">Forms embedded on website and tested</label></li>
+                    <li><input type="checkbox" id="chk-9"><label for="chk-9">Review links verified and working</label></li>
+                    <li><input type="checkbox" id="chk-10"><label for="chk-10">Send client a "You're Live!" email summarizing what was built and how to use it</label></li>
+                    <li><input type="checkbox" id="chk-11"><label for="chk-11">Schedule 2-week check-in call</label></li>
+                    <li><input type="checkbox" id="chk-12"><label for="chk-12">If maintenance package purchased, set up monthly review calendar reminder</label></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== SECTION 9 ==================== -->
+    <div class="section" id="section-9">
+        <div class="section-header" onclick="toggleSection(this)">
+            <div class="section-header-left">
+                <div class="section-number">9</div>
+                <div class="section-title">Pricing Quick Reference</div>
+            </div>
+            <div class="section-chevron">&#9662;</div>
+        </div>
+        <div class="section-body">
+            <div class="section-content">
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>Package</th><th>Price</th><th>What's Included</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Custom Website</td><td>$3,000-$5,000</td><td>Single-page or multi-page site, mobile responsive, SEO basics</td></tr>
+                            <tr><td>New Client Onboarding</td><td>$1,497-$2,497</td><td>5-7 email sequence, group, form, testing, training</td></tr>
+                            <tr><td>Review Collection</td><td>$1,497-$2,497</td><td>3-email sequence, happy gate option, review link setup</td></tr>
+                            <tr><td>Scheduling & Reminders</td><td>$1,497-$2,497</td><td>Email reminders, post-appointment follow-up</td></tr>
+                            <tr><td>Report Generator</td><td>$1,497-$2,497</td><td>Custom report automation (complexity varies)</td></tr>
+                            <tr><td>Lead Follow-Up</td><td>$1,497-$2,497</td><td>5-email nurture sequence, web form, lead source connections</td></tr>
+                            <tr><td>Monthly Maintenance</td><td>$147-$247/mo</td><td>Updates, monitoring, optimization</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout-amber callout">
+                    <strong>Note:</strong> These prices haven't been confirmed by Scott yet. Update when finalized.
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    Internal use only &mdash; AI Ops System Build Playbook
+</footer>
+
+<script>
+    // Toggle accordion sections
+    function toggleSection(header) {
+        const section = header.parentElement;
+        const wasOpen = section.classList.contains('open');
+
+        // Close all sections
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('open'));
+
+        // Open clicked section (unless it was already open)
+        if (!wasOpen) {
+            section.classList.add('open');
+        }
+    }
+
+    // Checklist persistence with localStorage
+    const STORAGE_KEY = 'aiops-build-playbook-checklist';
+
+    function saveChecklist() {
+        const checks = {};
+        document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+            checks[cb.id] = cb.checked;
+        });
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+        } catch (e) {
+            // localStorage not available, silently fail
+        }
+    }
+
+    function loadChecklist() {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                const checks = JSON.parse(saved);
+                Object.keys(checks).forEach(id => {
+                    const cb = document.getElementById(id);
+                    if (cb) cb.checked = checks[id];
+                });
+            }
+        } catch (e) {
+            // localStorage not available, silently fail
+        }
+    }
+
+    // Attach change listeners to checkboxes
+    document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', saveChecklist);
+    });
+
+    // Load saved state on page load
+    loadChecklist();
+</script>
+
+</body>
+</html>

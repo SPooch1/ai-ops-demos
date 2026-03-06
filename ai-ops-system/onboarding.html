@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Ops System - Client Onboarding Checklist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #111111;
+            --bg-input: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #d1d5db;
+            --text-muted: #9ca3af;
+            --accent-blue: #0EA5E9;
+            --accent-bright: #38bdf8;
+            --accent-amber: #F59E0B;
+            --border-dark: #1f2937;
+            --border-input: #374151;
+            --green-accent: #10b981;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            html { scroll-behavior: auto; }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* === HEADER === */
+        header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-dark);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-bright));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-contact {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .header-contact a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* === PROGRESS BAR === */
+        .progress-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 0;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .progress-pct {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: var(--border-dark);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-bright));
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
+
+        /* === INTRO === */
+        .intro {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 0.5rem;
+        }
+
+        .intro h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .intro .subtitle {
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 700px;
+        }
+
+        /* === ACTION BUTTONS === */
+        .action-bar {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .btn:active { transform: scale(0.97); }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .btn-primary:hover { background: var(--accent-bright); }
+
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-dark);
+        }
+
+        .btn-secondary:hover { background: var(--border-dark); }
+
+        /* === ACCORDION === */
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        .accordion-section {
+            border: 1px solid var(--border-dark);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            overflow: hidden;
+        }
+
+        .accordion-section.conditional-hidden {
+            display: none;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.15rem 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .accordion-header:hover {
+            background: rgba(255,255,255,0.03);
+        }
+
+        .accordion-header-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-number {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--border-dark);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-number.complete {
+            background: var(--green-accent);
+            color: #fff;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .accordion-arrow {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .accordion-section.open .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-section.open .accordion-body {
+            max-height: 5000px;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* === FORM ELEMENTS === */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group label .hint {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            background: var(--bg-input);
+            border: 1px solid var(--border-input);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%239ca3af' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+            cursor: pointer;
+        }
+
+        select option {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+
+        input[type="color"] {
+            width: 50px;
+            height: 40px;
+            padding: 2px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-input);
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .color-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .color-row input[type="text"] {
+            flex: 1;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-blue);
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        /* Radio */
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+        }
+
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-blue);
+            cursor: pointer;
+        }
+
+        .radio-item label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            margin-bottom: 0;
+        }
+
+        /* Form grid */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 640px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* Repeater */
+        .repeater-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .repeater-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border-dark);
+            border-radius: 8px;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .repeater-item .remove-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.75rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .repeater-item .remove-btn:hover { color: #ef4444; }
+
+        .add-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: none;
+            border: 1px dashed var(--border-input);
+            border-radius: 8px;
+            color: var(--accent-blue);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: border-color 0.2s;
+        }
+
+        .add-btn:hover { border-color: var(--accent-blue); }
+
+        /* Upload placeholder */
+        .upload-zone {
+            border: 2px dashed var(--border-input);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-zone .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .upload-note {
+            font-size: 0.8rem;
+            color: var(--accent-amber);
+            margin-top: 0.5rem;
+        }
+
+        /* Info box */
+        .info-box {
+            background: rgba(14, 165, 233, 0.08);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            line-height: 1.5;
+        }
+
+        .info-box.warning {
+            background: rgba(245, 158, 11, 0.08);
+            border-color: rgba(245, 158, 11, 0.2);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--green-accent);
+            color: #fff;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 200;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-dark);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 640px) {
+            .header-content { padding: 1rem 1.25rem; }
+            .logo { font-size: 1.25rem; }
+            .header-contact { display: none; }
+            .intro { padding: 1.5rem 1.25rem 0.5rem; }
+            .intro h1 { font-size: 1.5rem; }
+            .action-bar { padding: 1rem 1.25rem; }
+            .accordion { padding: 0 1.25rem 2rem; }
+            .accordion-content { padding: 0 1rem 1.25rem; }
+            .accordion-header { padding: 1rem; }
+            .progress-container { padding: 1.25rem 1.25rem 0; }
+            .checkbox-group { gap: 0.5rem; }
+        }
+
+        /* === PRINT === */
+        @media print {
+            * { color: #000 !important; background: #fff !important; }
+            body { font-size: 11pt; }
+            header { position: static; border-bottom: 2px solid #000; }
+            .logo {
+                -webkit-text-fill-color: #0EA5E9;
+                color: #0EA5E9;
+            }
+            .progress-container, .action-bar, .toast, .add-btn, .remove-btn, .accordion-arrow { display: none !important; }
+            .accordion-section {
+                border: 1px solid #ccc;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .accordion-section.conditional-hidden { display: none !important; }
+            .accordion-body {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            .accordion-header { cursor: default; }
+            .section-number {
+                border: 2px solid #000;
+                color: #000 !important;
+            }
+            .section-number.complete {
+                background: #10b981 !important;
+                color: #fff !important;
+                border-color: #10b981;
+            }
+            input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="number"],
+            textarea, select {
+                border: 1px solid #999;
+                padding: 0.4rem;
+            }
+            .upload-zone { border-color: #999; }
+            .info-box { border-color: #999; background: #f5f5f5 !important; }
+            footer { border-top: 1px solid #ccc; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-content">
+        <div class="logo">AI Ops System</div>
+        <div class="header-contact">
+            <a href="mailto:scott@aiopssystem.com">scott@aiopssystem.com</a>
+        </div>
+    </div>
+</header>
+
+<!-- PROGRESS -->
+<div class="progress-container">
+    <div class="progress-header">
+        <span class="progress-label">Checklist Progress</span>
+        <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+    <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+    <h1>Client Onboarding Checklist</h1>
+    <p class="subtitle">Let's get your project started.</p>
+    <p>Welcome! This checklist helps us gather everything we need to build your custom website and automations. Fill in what you can -- we'll work through the rest together.</p>
+</div>
+
+<!-- ACTION BUTTONS -->
+<div class="action-bar">
+    <button class="btn btn-primary" onclick="saveProgress()">Save Progress</button>
+    <button class="btn btn-secondary" onclick="window.print()">Print / Export</button>
+</div>
+
+<!-- ACCORDION -->
+<div class="accordion" id="accordion">
+
+    <!-- ========== SECTION 1: BUSINESS BASICS ========== -->
+    <div class="accordion-section open" data-section="business-basics">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-1">1</div>
+                <div class="section-title">Business Basics</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Business Name</label>
+                        <input type="text" data-field="businessName" placeholder="Your business name">
+                    </div>
+                    <div class="form-group">
+                        <label>Industry / Niche</label>
+                        <input type="text" data-field="industry" placeholder="e.g., Dental, Legal, HVAC">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Years in Business</label>
+                        <input type="number" data-field="yearsInBusiness" placeholder="e.g., 12" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Employees</label>
+                        <input type="number" data-field="numEmployees" placeholder="e.g., 35" min="0">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Primary Contact Name</label>
+                        <input type="text" data-field="contactName" placeholder="Full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" data-field="contactEmail" placeholder="you@company.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" data-field="contactPhone" placeholder="(555) 123-4567">
+                    </div>
+                    <div class="form-group">
+                        <label>Website URL <span class="hint">(if existing)</span></label>
+                        <input type="url" data-field="websiteUrl" placeholder="https://yoursite.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Business Address</label>
+                    <input type="text" data-field="businessAddress" placeholder="Street, City, State, ZIP">
+                </div>
+                <div class="form-group">
+                    <label>What packages did you purchase?</label>
+                    <div class="checkbox-group" id="packageCheckboxes">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-website" data-field="pkg-website" data-package="website">
+                            <label for="pkg-website">Custom Website</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-onboarding" data-field="pkg-onboarding" data-package="onboarding">
+                            <label for="pkg-onboarding">New Client Onboarding</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-reviews" data-field="pkg-reviews" data-package="reviews">
+                            <label for="pkg-reviews">Review Collection</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-scheduling" data-field="pkg-scheduling" data-package="scheduling">
+                            <label for="pkg-scheduling">Scheduling &amp; Reminders</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-reports" data-field="pkg-reports" data-package="reports">
+                            <label for="pkg-reports">Report Generator</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="pkg-leadfollowup" data-field="pkg-leadfollowup" data-package="leadfollowup">
+                            <label for="pkg-leadfollowup">Lead Follow-Up</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 2: BRAND ASSETS ========== -->
+    <div class="accordion-section" data-section="brand-assets">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-2">2</div>
+                <div class="section-title">Brand Assets</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>Logo</label>
+                    <div class="upload-zone">
+                        <span class="upload-icon">&#128196;</span>
+                        Logo file(s) -- PNG, SVG, or AI preferred
+                    </div>
+                    <p class="upload-note">This page cannot accept file uploads. Email your logo and brand files to <strong>scott@aiopssystem.com</strong> with the subject line: <em>[Your Business Name] - Brand Assets</em></p>
+                </div>
+                <div class="form-group">
+                    <label>Brand Colors</label>
+                    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                        <div class="color-row">
+                            <input type="color" data-field="colorPrimary" value="#0EA5E9">
+                            <input type="text" data-field="colorPrimaryHex" placeholder="Primary color hex (e.g., #0EA5E9)">
+                        </div>
+                        <div class="color-row">
+                            <input type="color" data-field="colorSecondary" value="#111111">
+                            <input type="text" data-field="colorSecondaryHex" placeholder="Secondary color hex">
+                        </div>
+                        <div class="color-row">
+                            <input type="color" data-field="colorAccent" value="#F59E0B">
+                            <input type="text" data-field="colorAccentHex" placeholder="Accent color hex">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Heading Font <span class="hint">(or "Use your judgment")</span></label>
+                        <input type="text" data-field="fontHeading" placeholder='e.g., Montserrat, or "Use your judgment"'>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Body Font</label>
+                        <input type="text" data-field="fontBody" placeholder='e.g., Open Sans, or "Use your judgment"'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Tagline / Slogan</label>
+                    <input type="text" data-field="tagline" placeholder="Your brand tagline">
+                </div>
+                <div class="form-group">
+                    <label>Brand Voice</label>
+                    <select data-field="brandVoice">
+                        <option value="">Select one...</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Friendly">Friendly</option>
+                        <option value="Authoritative">Authoritative</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Brand Voice Notes <span class="hint">(describe your brand's personality)</span></label>
+                    <textarea data-field="brandVoiceNotes" placeholder="How do you want to come across to customers? Warm and welcoming? Sharp and professional? Describe your ideal tone."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 3: WEBSITE CONTENT (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="website-content" data-requires="website">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-3">3</div>
+                <div class="section-title">Website Content</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>Hero Headline <span class="hint">(the first thing visitors should see)</span></label>
+                    <input type="text" data-field="heroHeadline" placeholder='e.g., "We make your smile our priority"'>
+                </div>
+                <div class="form-group">
+                    <label>Services / Offerings <span class="hint">(list your main services)</span></label>
+                    <textarea data-field="servicesList" placeholder="List each service on its own line. Include a brief description if you'd like."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Section</label>
+                    <textarea data-field="aboutText" placeholder="Tell us your story. How did the business start? What makes you different?"></textarea>
+                    <div class="checkbox-item" style="margin-top:0.5rem;">
+                        <input type="checkbox" id="writeAboutForMe" data-field="writeAboutForMe">
+                        <label for="writeAboutForMe">Write it for me (we'll draft this based on a conversation)</label>
+                    </div>
+                </div>
+
+                <!-- Team repeater -->
+                <div class="form-group">
+                    <label>Team Members</label>
+                    <div class="repeater-list" id="teamRepeater"></div>
+                    <button class="add-btn" onclick="addTeamMember()">+ Add Team Member</button>
+                    <p class="upload-note" style="margin-top:0.75rem;">Email headshots to <strong>scott@aiopssystem.com</strong> with the subject line: <em>[Your Business Name] - Brand Assets</em></p>
+                </div>
+
+                <!-- Testimonials repeater -->
+                <div class="form-group">
+                    <label>Testimonials</label>
+                    <div class="repeater-list" id="testimonialRepeater"></div>
+                    <button class="add-btn" onclick="addTestimonial()">+ Add Testimonial</button>
+                    <div class="checkbox-item" style="margin-top:0.5rem;">
+                        <input type="checkbox" id="noTestimonials" data-field="noTestimonials">
+                        <label for="noTestimonials">I don't have any yet</label>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Call-to-Action Text <span class="hint">(main button)</span></label>
+                        <input type="text" data-field="ctaText" placeholder='e.g., "Book a Free Consultation"'>
+                    </div>
+                    <div class="form-group">
+                        <label>CTA Destination</label>
+                        <input type="text" data-field="ctaDestination" placeholder="Link, phone number, or email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Pages Beyond Homepage</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="page-about" data-field="page-about">
+                            <label for="page-about">About</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="page-services" data-field="page-services">
+                            <label for="page-services">Services</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="page-contact" data-field="page-contact">
+                            <label for="page-contact">Contact</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="page-blog" data-field="page-blog">
+                            <label for="page-blog">Blog</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="page-other" data-field="page-other">
+                            <label for="page-other">Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Competitor Websites You Admire <span class="hint">(we'll use these for inspiration, not copying)</span></label>
+                    <textarea data-field="competitorSites" placeholder="Paste URLs and note what you like about each one."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Anything You Do NOT Want?</label>
+                    <textarea data-field="doNotWant" placeholder="Specific things to avoid -- colors, styles, features, messaging, etc."></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 4: NEW CLIENT ONBOARDING (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="onboarding-auto" data-requires="onboarding">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-4">4</div>
+                <div class="section-title">New Client Onboarding Automation</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>What happens after someone becomes a client? <span class="hint">(describe your current process)</span></label>
+                    <textarea data-field="currentOnboarding" placeholder="Walk us through what happens today -- emails, calls, paperwork, etc."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Welcome Email -- From Name</label>
+                        <input type="text" data-field="welcomeFromName" placeholder="e.g., Dr. Smith">
+                    </div>
+                    <div class="form-group">
+                        <label>Welcome Email -- From Email</label>
+                        <input type="email" data-field="welcomeFromEmail" placeholder="hello@yourbusiness.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>What documents/forms do new clients need to complete?</label>
+                    <textarea data-field="onboardingDocs" placeholder="List any forms, agreements, intake documents, etc."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Do you use any intake forms currently?</label>
+                    <div class="radio-group" style="margin-bottom:0.5rem;">
+                        <div class="radio-item">
+                            <input type="radio" name="hasIntakeForms" id="intakeYes" data-field="hasIntakeForms" value="yes">
+                            <label for="intakeYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="hasIntakeForms" id="intakeNo" data-field="hasIntakeForms" value="no">
+                            <label for="intakeNo">No</label>
+                        </div>
+                    </div>
+                    <input type="url" data-field="intakeFormLink" placeholder="Link to current intake form (if yes)">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>How many touchpoints in your ideal onboarding?</label>
+                        <select data-field="onboardingTouchpoints">
+                            <option value="">Select...</option>
+                            <option value="3-5">3-5</option>
+                            <option value="5-7">5-7</option>
+                            <option value="7-10">7-10</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Onboarding Timeline</label>
+                        <select data-field="onboardingTimeline">
+                            <option value="">Select...</option>
+                            <option value="1 week">1 week</option>
+                            <option value="2 weeks">2 weeks</option>
+                            <option value="1 month">1 month</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 5: REVIEW COLLECTION (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="review-auto" data-requires="reviews">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-5">5</div>
+                <div class="section-title">Review Collection Automation</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>Where do you want reviews?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-google" data-field="rev-google">
+                            <label for="rev-google">Google</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-yelp" data-field="rev-yelp">
+                            <label for="rev-yelp">Yelp</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-facebook" data-field="rev-facebook">
+                            <label for="rev-facebook">Facebook</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-healthgrades" data-field="rev-healthgrades">
+                            <label for="rev-healthgrades">Healthgrades</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-avvo" data-field="rev-avvo">
+                            <label for="rev-avvo">Avvo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="rev-other" data-field="rev-other">
+                            <label for="rev-other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Review Page URL(s) <span class="hint">(one per line, label each platform)</span></label>
+                    <textarea data-field="reviewUrls" placeholder="Google: https://g.page/...&#10;Yelp: https://yelp.com/biz/..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>How long after service should the review request go out?</label>
+                    <select data-field="reviewDelay">
+                        <option value="">Select...</option>
+                        <option value="Same day">Same day</option>
+                        <option value="1 day">1 day after</option>
+                        <option value="2 days">2 days after</option>
+                        <option value="3 days">3 days after</option>
+                        <option value="1 week">1 week after</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Do you want a "happy gate"?</label>
+                    <div class="info-box">A happy gate asks customers about their satisfaction first. Only those who respond positively are directed to leave a public review. This protects your online reputation.</div>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="happyGate" id="happyGateYes" data-field="happyGate" value="yes">
+                            <label for="happyGateYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="happyGate" id="happyGateNo" data-field="happyGate" value="no">
+                            <label for="happyGateNo">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Follow up if no review is left?</label>
+                    <div class="radio-group" style="margin-bottom:0.5rem;">
+                        <div class="radio-item">
+                            <input type="radio" name="reviewFollowup" id="revFollowYes" data-field="reviewFollowup" value="yes">
+                            <label for="revFollowYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="reviewFollowup" id="revFollowNo" data-field="reviewFollowup" value="no">
+                            <label for="revFollowNo">No</label>
+                        </div>
+                    </div>
+                    <input type="text" data-field="reviewFollowupDays" placeholder="How many days later? (e.g., 5)">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 6: SCHEDULING & REMINDERS (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="scheduling-auto" data-requires="scheduling">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-6">6</div>
+                <div class="section-title">Scheduling &amp; Reminders Automation</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>Current Scheduling Tool</label>
+                    <select data-field="schedulingTool">
+                        <option value="">Select...</option>
+                        <option value="Calendly">Calendly</option>
+                        <option value="Acuity">Acuity</option>
+                        <option value="HubSpot">HubSpot</option>
+                        <option value="Google Calendar">Google Calendar</option>
+                        <option value="None">None</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Appointment Types <span class="hint">(list each type)</span></label>
+                    <textarea data-field="appointmentTypes" placeholder="e.g., Initial Consultation (30 min), Follow-up Visit (15 min), Full Exam (60 min)"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Reminder Timing</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="remind-1w" data-field="remind-1w">
+                            <label for="remind-1w">1 week before</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="remind-3d" data-field="remind-3d">
+                            <label for="remind-3d">3 days before</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="remind-1d" data-field="remind-1d">
+                            <label for="remind-1d">1 day before</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="remind-1h" data-field="remind-1h">
+                            <label for="remind-1h">1 hour before</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="remind-other" data-field="remind-other">
+                            <label for="remind-other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Reminder Channels</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="chan-email" data-field="chan-email">
+                            <label for="chan-email">Email</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="chan-sms" data-field="chan-sms">
+                            <label for="chan-sms">SMS</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="chan-both" data-field="chan-both">
+                            <label for="chan-both">Both</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>No-Show Follow-Up?</label>
+                    <div class="radio-group" style="margin-bottom:0.5rem;">
+                        <div class="radio-item">
+                            <input type="radio" name="noshowFollowup" id="noshowYes" data-field="noshowFollowup" value="yes">
+                            <label for="noshowYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="noshowFollowup" id="noshowNo" data-field="noshowFollowup" value="no">
+                            <label for="noshowNo">No</label>
+                        </div>
+                    </div>
+                    <input type="text" data-field="noshowTiming" placeholder="How soon after the missed appointment?">
+                </div>
+                <div class="form-group">
+                    <label>Post-Appointment Follow-Up?</label>
+                    <div class="radio-group" style="margin-bottom:0.5rem;">
+                        <div class="radio-item">
+                            <input type="radio" name="postApptFollowup" id="postApptYes" data-field="postApptFollowup" value="yes">
+                            <label for="postApptYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="postApptFollowup" id="postApptNo" data-field="postApptFollowup" value="no">
+                            <label for="postApptNo">No</label>
+                        </div>
+                    </div>
+                    <textarea data-field="postApptMessage" placeholder="What should the follow-up message say?"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 7: REPORT GENERATOR (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="report-auto" data-requires="reports">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-7">7</div>
+                <div class="section-title">Report Generator Automation</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>What kind of reports?</label>
+                    <textarea data-field="reportTypes" placeholder="Describe the reports you need. What information should they contain?"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Data Sources <span class="hint">(where does the data come from?)</span></label>
+                    <textarea data-field="dataSources" placeholder="e.g., QuickBooks, Google Sheets, CRM, manual entry"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Report Frequency</label>
+                    <select data-field="reportFrequency">
+                        <option value="">Select...</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="Quarterly">Quarterly</option>
+                        <option value="On-demand">On-demand</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Who Receives the Reports? <span class="hint">(names and/or roles)</span></label>
+                    <textarea data-field="reportRecipients" placeholder="e.g., Owner, Office Manager, Accountant"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Report Format Preference</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fmt-pdf" data-field="fmt-pdf">
+                            <label for="fmt-pdf">PDF</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fmt-email" data-field="fmt-email">
+                            <label for="fmt-email">Email summary</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fmt-dashboard" data-field="fmt-dashboard">
+                            <label for="fmt-dashboard">Dashboard</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="fmt-other" data-field="fmt-other">
+                            <label for="fmt-other">Other</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 8: LEAD FOLLOW-UP (conditional) ========== -->
+    <div class="accordion-section conditional-hidden" data-section="lead-auto" data-requires="leadfollowup">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-8">8</div>
+                <div class="section-title">Lead Follow-Up Automation</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="form-group">
+                    <label>Where do your leads come from?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-website" data-field="lead-website">
+                            <label for="lead-website">Website form</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-phone" data-field="lead-phone">
+                            <label for="lead-phone">Phone call</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-referral" data-field="lead-referral">
+                            <label for="lead-referral">Referral</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-social" data-field="lead-social">
+                            <label for="lead-social">Social media</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-ads" data-field="lead-ads">
+                            <label for="lead-ads">Advertising</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lead-other" data-field="lead-other">
+                            <label for="lead-other">Other</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Current Follow-Up Process</label>
+                    <textarea data-field="currentFollowup" placeholder="What happens today when a new lead comes in? Who handles it? How quickly?"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ideal Response Time</label>
+                        <select data-field="responseTime">
+                            <option value="">Select...</option>
+                            <option value="Immediately">Immediately</option>
+                            <option value="Within 1 hour">Within 1 hour</option>
+                            <option value="Same day">Same day</option>
+                            <option value="Next business day">Next business day</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>How Many Follow-Up Touches?</label>
+                        <select data-field="followupTouches">
+                            <option value="">Select...</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Follow-Up Over How Many Days?</label>
+                    <select data-field="followupDuration">
+                        <option value="">Select...</option>
+                        <option value="1 week">1 week</option>
+                        <option value="2 weeks">2 weeks</option>
+                        <option value="1 month">1 month</option>
+                        <option value="2 months">2 months</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>CRM Currently Used?</label>
+                    <select data-field="currentCrm">
+                        <option value="">Select...</option>
+                        <option value="HubSpot">HubSpot</option>
+                        <option value="Salesforce">Salesforce</option>
+                        <option value="None">None</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>CRM Details <span class="hint">(if "Other" above)</span></label>
+                    <input type="text" data-field="crmOther" placeholder="Name of CRM">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SECTION 9: LOGINS & ACCESS ========== -->
+    <div class="accordion-section" data-section="logins-access">
+        <div class="accordion-header" onclick="toggleSection(this)">
+            <div class="accordion-header-left">
+                <div class="section-number" id="sn-9">9</div>
+                <div class="section-title">Logins &amp; Access</div>
+            </div>
+            <div class="accordion-arrow">&#9662;</div>
+        </div>
+        <div class="accordion-body">
+            <div class="accordion-content">
+                <div class="info-box warning">We may need access to set up integrations. Share credentials securely via a password manager (1Password, LastPass, etc.) or a secure link. <strong>Do NOT type passwords on this page.</strong></div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Domain Registrar</label>
+                        <select data-field="domainRegistrar">
+                            <option value="">Select...</option>
+                            <option value="GoDaddy">GoDaddy</option>
+                            <option value="Namecheap">Namecheap</option>
+                            <option value="Google Domains">Google Domains</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Domain Registrar Login Email</label>
+                        <input type="email" data-field="domainEmail" placeholder="email@used-for-login.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Website Hosting</label>
+                        <select data-field="hostingProvider">
+                            <option value="">Select...</option>
+                            <option value="SiteGround">SiteGround</option>
+                            <option value="GoDaddy">GoDaddy</option>
+                            <option value="Wix">Wix</option>
+                            <option value="Squarespace">Squarespace</option>
+                            <option value="None">None</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hosting Login Email</label>
+                        <input type="email" data-field="hostingEmail" placeholder="email@used-for-login.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email Platform</label>
+                        <select data-field="emailPlatform">
+                            <option value="">Select...</option>
+                            <option value="MailerLite">MailerLite</option>
+                            <option value="Mailchimp">Mailchimp</option>
+                            <option value="Constant Contact">Constant Contact</option>
+                            <option value="None">None</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Platform Login Email</label>
+                        <input type="email" data-field="emailPlatformEmail" placeholder="email@used-for-login.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Google Business Profile Access?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="gbpAccess" id="gbpYes" data-field="gbpAccess" value="yes">
+                            <label for="gbpYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="gbpAccess" id="gbpNo" data-field="gbpAccess" value="no">
+                            <label for="gbpNo">No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Social Media Accounts <span class="hint">(check the ones you use and add your handle/URL)</span></label>
+                    <div style="display:flex;flex-direction:column;gap:0.75rem;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div class="checkbox-item" style="min-width:130px;">
+                                <input type="checkbox" id="social-fb" data-field="social-fb">
+                                <label for="social-fb">Facebook</label>
+                            </div>
+                            <input type="text" data-field="socialFbHandle" placeholder="Page URL or handle" style="flex:1;">
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div class="checkbox-item" style="min-width:130px;">
+                                <input type="checkbox" id="social-ig" data-field="social-ig">
+                                <label for="social-ig">Instagram</label>
+                            </div>
+                            <input type="text" data-field="socialIgHandle" placeholder="@handle" style="flex:1;">
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div class="checkbox-item" style="min-width:130px;">
+                                <input type="checkbox" id="social-li" data-field="social-li">
+                                <label for="social-li">LinkedIn</label>
+                            </div>
+                            <input type="text" data-field="socialLiHandle" placeholder="Profile or company page URL" style="flex:1;">
+                        </div>
+                        <div style="display:flex;align-items:center;gap:0.75rem;">
+                            <div class="checkbox-item" style="min-width:130px;">
+                                <input type="checkbox" id="social-x" data-field="social-x">
+                                <label for="social-x">Twitter / X</label>
+                            </div>
+                            <input type="text" data-field="socialXHandle" placeholder="@handle" style="flex:1;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div><!-- /accordion -->
+
+<!-- TOAST -->
+<div class="toast" id="toast">Progress saved!</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>Questions? Email <a href="mailto:scott@aiopssystem.com">scott@aiopssystem.com</a> or call <a href="tel:6144346670">614-434-6670</a></p>
+</footer>
+
+<script>
+(function() {
+    'use strict';
+
+    const STORAGE_KEY = 'aiops-onboarding-data';
+    const TEAM_KEY = 'aiops-onboarding-team';
+    const TESTIMONIAL_KEY = 'aiops-onboarding-testimonials';
+
+    // ==================== ACCORDION ====================
+    window.toggleSection = function(headerEl) {
+        const section = headerEl.closest('.accordion-section');
+        section.classList.toggle('open');
+    };
+
+    // ==================== CONDITIONAL SECTIONS ====================
+    const packageMap = {
+        'website': '[data-requires="website"]',
+        'onboarding': '[data-requires="onboarding"]',
+        'reviews': '[data-requires="reviews"]',
+        'scheduling': '[data-requires="scheduling"]',
+        'reports': '[data-requires="reports"]',
+        'leadfollowup': '[data-requires="leadfollowup"]'
+    };
+
+    function updateConditionalSections() {
+        Object.keys(packageMap).forEach(function(pkg) {
+            const checkbox = document.querySelector('[data-package="' + pkg + '"]');
+            const section = document.querySelector(packageMap[pkg]);
+            if (!checkbox || !section) return;
+            if (checkbox.checked) {
+                section.classList.remove('conditional-hidden');
+            } else {
+                section.classList.add('conditional-hidden');
+                if (section.classList.contains('open')) {
+                    section.classList.remove('open');
+                }
+            }
+        });
+        updateProgress();
+    }
+
+    document.querySelectorAll('[data-package]').forEach(function(cb) {
+        cb.addEventListener('change', updateConditionalSections);
+    });
+
+    // ==================== LOCAL STORAGE ====================
+    function getAllFields() {
+        return document.querySelectorAll('[data-field]');
+    }
+
+    function saveData() {
+        var data = {};
+        getAllFields().forEach(function(el) {
+            var key = el.getAttribute('data-field');
+            if (el.type === 'checkbox') {
+                data[key] = el.checked;
+            } else if (el.type === 'radio') {
+                if (el.checked) data[key] = el.value;
+            } else if (el.type === 'color') {
+                data[key] = el.value;
+            } else {
+                data[key] = el.value;
+            }
+        });
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        } catch(e) {}
+    }
+
+    function loadData() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return;
+            var data = JSON.parse(raw);
+            getAllFields().forEach(function(el) {
+                var key = el.getAttribute('data-field');
+                if (!(key in data)) return;
+                if (el.type === 'checkbox') {
+                    el.checked = !!data[key];
+                } else if (el.type === 'radio') {
+                    el.checked = (el.value === data[key]);
+                } else if (el.type === 'color') {
+                    el.value = data[key] || el.value;
+                } else {
+                    el.value = data[key] || '';
+                }
+            });
+        } catch(e) {}
+    }
+
+    // Auto-save on every input change
+    document.addEventListener('input', function() {
+        saveData();
+        saveRepeaterData();
+        updateProgress();
+    });
+    document.addEventListener('change', function() {
+        saveData();
+        saveRepeaterData();
+        updateProgress();
+    });
+
+    // ==================== REPEATERS ====================
+    var teamCounter = 0;
+    var testimonialCounter = 0;
+
+    window.addTeamMember = function(data) {
+        teamCounter++;
+        var id = teamCounter;
+        var container = document.getElementById('teamRepeater');
+        var item = document.createElement('div');
+        item.className = 'repeater-item';
+        item.setAttribute('data-team-id', id);
+        item.innerHTML =
+            '<button class="remove-btn" onclick="removeRepeater(this)" title="Remove">&times;</button>' +
+            '<div class="form-row">' +
+                '<div class="form-group"><label>Name</label><input type="text" data-repeater="team-name-' + id + '" placeholder="Full name" value="' + escHtml((data && data.name) || '') + '"></div>' +
+                '<div class="form-group"><label>Title</label><input type="text" data-repeater="team-title-' + id + '" placeholder="Job title" value="' + escHtml((data && data.title) || '') + '"></div>' +
+            '</div>' +
+            '<div class="form-group"><label>Short Bio</label><textarea data-repeater="team-bio-' + id + '" placeholder="A few sentences about this person">' + escHtml((data && data.bio) || '') + '</textarea></div>';
+        container.appendChild(item);
+    };
+
+    window.addTestimonial = function(data) {
+        testimonialCounter++;
+        var id = testimonialCounter;
+        var container = document.getElementById('testimonialRepeater');
+        var item = document.createElement('div');
+        item.className = 'repeater-item';
+        item.setAttribute('data-testimonial-id', id);
+        item.innerHTML =
+            '<button class="remove-btn" onclick="removeRepeater(this)" title="Remove">&times;</button>' +
+            '<div class="form-group"><label>Quote</label><textarea data-repeater="test-quote-' + id + '" placeholder="What did the customer say?">' + escHtml((data && data.quote) || '') + '</textarea></div>' +
+            '<div class="form-row">' +
+                '<div class="form-group"><label>Name</label><input type="text" data-repeater="test-name-' + id + '" placeholder="Customer name" value="' + escHtml((data && data.name) || '') + '"></div>' +
+                '<div class="form-group"><label>Company</label><input type="text" data-repeater="test-company-' + id + '" placeholder="Company name" value="' + escHtml((data && data.company) || '') + '"></div>' +
+            '</div>';
+        container.appendChild(item);
+    };
+
+    window.removeRepeater = function(btn) {
+        btn.closest('.repeater-item').remove();
+        saveRepeaterData();
+        updateProgress();
+    };
+
+    function escHtml(s) {
+        var d = document.createElement('div');
+        d.textContent = s || '';
+        return d.innerHTML;
+    }
+
+    function saveRepeaterData() {
+        // Team
+        var teams = [];
+        document.querySelectorAll('#teamRepeater .repeater-item').forEach(function(item) {
+            var inputs = item.querySelectorAll('[data-repeater]');
+            var obj = {};
+            inputs.forEach(function(inp) {
+                var key = inp.getAttribute('data-repeater');
+                if (key.indexOf('team-name') === 0) obj.name = inp.value;
+                if (key.indexOf('team-title') === 0) obj.title = inp.value;
+                if (key.indexOf('team-bio') === 0) obj.bio = inp.value;
+            });
+            teams.push(obj);
+        });
+        try { localStorage.setItem(TEAM_KEY, JSON.stringify(teams)); } catch(e) {}
+
+        // Testimonials
+        var testimonials = [];
+        document.querySelectorAll('#testimonialRepeater .repeater-item').forEach(function(item) {
+            var inputs = item.querySelectorAll('[data-repeater]');
+            var obj = {};
+            inputs.forEach(function(inp) {
+                var key = inp.getAttribute('data-repeater');
+                if (key.indexOf('test-quote') === 0) obj.quote = inp.value;
+                if (key.indexOf('test-name') === 0) obj.name = inp.value;
+                if (key.indexOf('test-company') === 0) obj.company = inp.value;
+            });
+            testimonials.push(obj);
+        });
+        try { localStorage.setItem(TESTIMONIAL_KEY, JSON.stringify(testimonials)); } catch(e) {}
+    }
+
+    function loadRepeaterData() {
+        try {
+            var teams = JSON.parse(localStorage.getItem(TEAM_KEY) || '[]');
+            teams.forEach(function(t) { addTeamMember(t); });
+        } catch(e) {}
+        try {
+            var testimonials = JSON.parse(localStorage.getItem(TESTIMONIAL_KEY) || '[]');
+            testimonials.forEach(function(t) { addTestimonial(t); });
+        } catch(e) {}
+    }
+
+    // ==================== PROGRESS ====================
+    function updateProgress() {
+        var total = 0;
+        var filled = 0;
+
+        // Count visible, non-hidden section fields
+        document.querySelectorAll('.accordion-section:not(.conditional-hidden)').forEach(function(section) {
+            section.querySelectorAll('[data-field]').forEach(function(el) {
+                // Skip radio buttons except the group representative
+                if (el.type === 'radio') {
+                    var name = el.getAttribute('name');
+                    var first = section.querySelector('input[name="' + name + '"]');
+                    if (el !== first) return;
+                    total++;
+                    var checked = section.querySelector('input[name="' + name + '"]:checked');
+                    if (checked) filled++;
+                    return;
+                }
+                if (el.type === 'checkbox') {
+                    // Package checkboxes and standalone checkboxes are optional, skip for progress
+                    return;
+                }
+                total++;
+                if (el.value && el.value.trim() !== '') filled++;
+            });
+        });
+
+        // Count repeater fields in visible sections
+        document.querySelectorAll('.accordion-section:not(.conditional-hidden) [data-repeater]').forEach(function(el) {
+            total++;
+            if (el.value && el.value.trim() !== '') filled++;
+        });
+
+        var pct = total > 0 ? Math.round((filled / total) * 100) : 0;
+        document.getElementById('progressPct').textContent = pct + '%';
+        document.getElementById('progressFill').style.width = pct + '%';
+
+        // Update section completion indicators
+        updateSectionIndicators();
+    }
+
+    function updateSectionIndicators() {
+        var sections = document.querySelectorAll('.accordion-section:not(.conditional-hidden)');
+        var sectionIndex = 0;
+        document.querySelectorAll('.accordion-section').forEach(function(section) {
+            if (section.classList.contains('conditional-hidden')) return;
+            sectionIndex++;
+            var snEl = section.querySelector('.section-number');
+            if (!snEl) return;
+
+            var allFilled = true;
+            var hasFields = false;
+
+            section.querySelectorAll('[data-field]').forEach(function(el) {
+                if (el.type === 'checkbox') return; // checkboxes are optional
+                if (el.type === 'radio') {
+                    var name = el.getAttribute('name');
+                    var first = section.querySelector('input[name="' + name + '"]');
+                    if (el !== first) return;
+                    hasFields = true;
+                    var checked = section.querySelector('input[name="' + name + '"]:checked');
+                    if (!checked) allFilled = false;
+                    return;
+                }
+                hasFields = true;
+                if (!el.value || el.value.trim() === '') allFilled = false;
+            });
+
+            section.querySelectorAll('[data-repeater]').forEach(function(el) {
+                hasFields = true;
+                if (!el.value || el.value.trim() === '') allFilled = false;
+            });
+
+            if (hasFields && allFilled) {
+                snEl.classList.add('complete');
+                snEl.innerHTML = '&#10003;';
+            } else {
+                snEl.classList.remove('complete');
+                // Restore original number
+                var allSections = document.querySelectorAll('.accordion-section:not(.conditional-hidden)');
+                var idx = Array.from(allSections).indexOf(section);
+                snEl.textContent = idx + 1;
+            }
+        });
+    }
+
+    // ==================== SAVE BUTTON + TOAST ====================
+    window.saveProgress = function() {
+        saveData();
+        saveRepeaterData();
+        var toast = document.getElementById('toast');
+        toast.classList.add('show');
+        setTimeout(function() { toast.classList.remove('show'); }, 2500);
+    };
+
+    // ==================== INIT ====================
+    loadData();
+    loadRepeaterData();
+    updateConditionalSections();
+    updateProgress();
+
+})();
+</script>
+</body>
+</html>
