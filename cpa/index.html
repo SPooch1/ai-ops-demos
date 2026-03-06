@@ -1596,6 +1596,60 @@
         }
 
         /* ============================================
+           AUTOMATION DEMO SECTION
+           ============================================ */
+        .demo-experience {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--forest-mist) 0%, var(--white) 100%);
+            text-align: center;
+        }
+        .demo-experience-card {
+            max-width: 560px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-xl);
+            padding: 40px 36px;
+            box-shadow: var(--shadow-md);
+        }
+        .demo-experience-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gold-pale);
+            color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+        .demo-experience h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--forest-deep);
+            margin-bottom: 10px;
+        }
+        .demo-experience p {
+            font-size: 0.92rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .demo-experience .ml-embedded {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .demo-experience-note {
+            font-size: 0.75rem;
+            color: var(--text-lighter);
+            margin-top: 16px;
+        }
+
+        /* ============================================
            REDUCED MOTION
            ============================================ */
         @media (prefers-reduced-motion: reduce) {
@@ -1640,7 +1694,7 @@
 
             <div class="nav-cta-group">
                 <a href="#" class="btn-portal">Client Portal</a>
-                <a href="#contact" class="btn-schedule">Schedule a Call</a>
+                <a href="https://meetings.hubspot.com/scott-pooch" class="btn-schedule">Schedule a Call</a>
                 <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                     <span></span>
                     <span></span>
@@ -1670,7 +1724,7 @@
                 </p>
 
                 <div class="hero-ctas reveal reveal-delay-3">
-                    <a href="#contact" class="btn-primary">
+                    <a href="https://meetings.hubspot.com/scott-pooch" class="btn-primary">
                         Schedule a Consultation
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
@@ -2159,10 +2213,27 @@
     <div class="container">
         <div class="cta-title reveal">Ready for a Financial Partner Who Thinks Ahead?</div>
         <div class="cta-text reveal reveal-delay-1">Schedule a no-obligation discovery call. We will listen first, then tell you honestly how we can help.</div>
-        <a href="#contact" class="btn-cta reveal reveal-delay-2">
+        <a href="https://meetings.hubspot.com/scott-pooch" class="btn-cta reveal reveal-delay-2">
             Schedule Your Discovery Call
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
+    </div>
+</section>
+
+<!-- ============================================
+     EXPERIENCE THE AUTOMATION
+     ============================================ -->
+<section class="demo-experience" id="demo-emails">
+    <div class="container">
+        <div class="demo-experience-card reveal">
+            <div class="demo-experience-badge">Interactive Demo</div>
+            <h3>Experience Our Client Communication</h3>
+            <p>Enter your email to receive a sample 4-email tax season sequence. See what proactive CPA client communication looks like in practice.</p>
+
+            <div class="ml-embedded" data-form="ysQUki"></div>
+
+            <div class="demo-experience-note">You will receive 4 emails over 2 weeks. Unsubscribe anytime. This is a demo by AI Ops System.</div>
+        </div>
     </div>
 </section>
 
@@ -2490,6 +2561,12 @@
     };
 
 })();
+</script>
+
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[]).push(arguments);},l=d.createElement(e),l.async=1,l.src=u,n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})(window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1646032');
 </script>
 
 </body>
